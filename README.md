@@ -65,3 +65,8 @@ FLUSH PRIVILEGES;
 ### Redis Setup
 
 Redis is used for caching. Make sure Redis is running on the host and port specified in the .env file.
+
+
+
+### How to connect to mysql database 
+docker exec -it questions_mysql mysql -u questions_user -pquestions_password
