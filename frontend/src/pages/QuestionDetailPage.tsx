@@ -1,0 +1,198 @@
+import React, { useState, useEffect } from 'react';
+import { useParams, Link } from 'react-router-dom';
+import { questionsApi } from '../api/client';
+import CommentList from '../components/CommentList';
+import AddComment from '../components/AddComment';
+import { Question, Comment, Tag } from '../api/types';
+
+const QuestionDetailPage: React.FC = () => {
+  const { id } = useParams<{ id: string }>();
+  const questionId = parseInt(id || '0');
+  
+  const [question, setQuestion] = useState<Question | null>(null);
+  const [comments, setComments] = useState<Comment[]>([]);
+  const [tags, setTags] = useState<Tag[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [isLiking, setIsLiking] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    if (questionId > 0) {
+      fetchQuestionData();
+    }
+  }, [questionId]);
+
+  const fetchQuestionData = async () => {
+    setIsLoading(true);
+    setError(null);
+    
+    try {
+      const response = await questionsApi.getQuestion(questionId);
+      
+      // Map the response data to our Question type
+      const questionData: Question = {
+        id: response.question.id,
+        title: response.question.title,
+        content: response.question.content,
+        created_at: response.question.created_at,
+        updated_at: response.question.updated_at,
+        user_id: 0, // Default value since not provided by API
+        username: '', // Default value since not provided by API
+        view_count: response.question.views_count,
+        like_count: response.question.likes_count
+      };
+      
+      setQuestion(questionData);
+      
+      // Map comments as well
+      const mappedComments = response.comments.map(c => ({
+        id: c.id,
+        content: c.content,
+        question_id: c.question_id,
+        user_id: 0, // Default value
+        username: '', // Default value
+        created_at: c.created_at,
+        updated_at: c.created_at, // Use created_at as update_at
+      }));
+      
+      setComments(mappedComments);
+      setTags(response.tags);
+    } catch (err) {
+      console.error('Error fetching question:', err);
+      setError('Failed to load the question. Please try again.');
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const handleLike = async () => {
+    if (isLiking || !questionId) return;
+    
+    setIsLiking(true);
+    
+    try {
+      await questionsApi.likeQuestion(questionId);
+      
+      // Refresh question data to get updated like count
+      fetchQuestionData();
+    } catch (err) {
+      console.error('Error liking question:', err);
+      alert('Failed to like the question. Please try again.');
+    } finally {
+      setIsLiking(false);
+    }
+  };
+
+  const handleCommentAdded = () => {
+    // Refresh the question data to get the new comment
+    fetchQuestionData();
+  };
+
+  const formatDate = (dateString: string) => {
+    const date = new Date(dateString);
+    return date.toLocaleDateString('en-US', {
+      year: 'numeric',
+      month: 'short',
+      day: 'numeric',
+      hour: '2-digit',
+      minute: '2-digit'
+    });
+  };
+
+  if (isLoading) {
+    return (
+      <div className="flex justify-center my-12">
+        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-indigo-500"></div>
+      </div>
+    );
+  }
+
+  if (error || !question) {
+    return (
+      <div className="bg-red-100 text-red-700 p-4 rounded-lg mb-6">
+        {error || 'Question not found'}
+        <div className="mt-4">
+          <Link to="/" className="text-indigo-600 hover:underline">
+            &larr; Back to questions
+          </Link>
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div>
+      <div className="mb-6">
+        <Link to="/" className="text-indigo-600 hover:underline flex items-center">
+          <svg className="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+          </svg>
+          Back to questions
+        </Link>
+      </div>
+
+      <div className="bg-white rounded-lg shadow-md p-6">
+        <h1 className="text-2xl font-bold text-gray-900 mb-4">{question.title}</h1>
+
+        {tags.length > 0 && (
+          <div className="flex flex-wrap gap-2 mb-4">
+            {tags.map((tag) => (
+              <Link
+                key={tag.id}
+                to={`/?tag=${tag.name}`}
+                className="bg-gray-200 text-gray-700 px-2 py-1 rounded-md text-sm hover:bg-gray-300"
+              >
+                {tag.name}
+              </Link>
+            ))}
+          </div>
+        )}
+
+        <div className="prose max-w-none mb-6">
+          <p className="text-gray-700 whitespace-pre-line">{question.content}</p>
+        </div>
+
+        <div className="flex justify-between text-sm text-gray-500 border-t pt-4">
+          <div className="flex items-center">
+            <span className="mr-4">
+              Posted on {formatDate(question.created_at)}
+            </span>
+            {question.updated_at !== question.created_at && (
+              <span>
+                Updated on {formatDate(question.updated_at)}
+              </span>
+            )}
+          </div>
+          
+          <div className="flex space-x-4">
+            <div className="flex items-center">
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-1 text-blue-500" viewBox="0 0 20 20" fill="currentColor">
+                <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
+                <path fillRule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clipRule="evenodd" />
+              </svg>
+              {question.view_count} views
+            </div>
+            
+            <button 
+              onClick={handleLike} 
+              disabled={isLiking}
+              className="flex items-center text-gray-700 hover:text-red-500 focus:outline-none disabled:opacity-50"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-1 text-red-500" viewBox="0 0 20 20" fill="currentColor">
+                <path fillRule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clipRule="evenodd" />
+              </svg>
+              {question.like_count} {question.like_count === 1 ? 'like' : 'likes'}
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div className="mt-8">
+        <CommentList comments={comments} />
+        <AddComment questionId={questionId} onCommentAdded={handleCommentAdded} />
+      </div>
+    </div>
+  );
+};
+
+export default QuestionDetailPage; 
