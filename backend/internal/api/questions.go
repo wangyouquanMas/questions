@@ -376,6 +376,22 @@ func LikeQuestion(c *gin.Context) {
 		return
 	}
 	
+	// Check if already liked
+	var alreadyLiked bool
+	err = db.DB.QueryRow("SELECT EXISTS(SELECT 1 FROM likes WHERE question_id = ?)", questionID).Scan(&alreadyLiked)
+	if err != nil {
+		fmt.Printf("Error checking if already liked: %v\n", err)
+		c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to check like status"})
+		return
+	}
+	
+	// If already liked, just return success
+	if alreadyLiked {
+		fmt.Printf("Question ID %d already liked\n", questionID)
+		c.JSON(http.StatusOK, gin.H{"message": "Question already liked"})
+		return
+	}
+	
 	// Begin transaction
 	tx, err := db.DB.Begin()
 	if err != nil {

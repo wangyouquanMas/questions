@@ -85,8 +85,13 @@ export const questionsApi = {
 
   // Get a single question by ID
   getQuestion: async (id: number): Promise<ApiQuestionResponse> => {
-    const response = await apiClient.get(`/questions/${id}`);
-    return response.data;
+    try {
+      const response = await apiClient.get(`/questions/${id}`);
+      return response.data;
+    } catch (error) {
+      console.error(`Error fetching question ${id}:`, error);
+      throw error;
+    }
   },
 
   // Create a new question

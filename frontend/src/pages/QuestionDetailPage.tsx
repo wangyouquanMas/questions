@@ -7,7 +7,7 @@ import { Question, Comment, Tag } from '../api/types';
 
 const QuestionDetailPage: React.FC = () => {
   const { id } = useParams<{ id: string }>();
-  const questionId = parseInt(id || '0');
+  const questionId = id ? parseInt(id, 10) : 0;
   
   const [question, setQuestion] = useState<Question | null>(null);
   const [comments, setComments] = useState<Comment[]>([]);
@@ -17,10 +17,14 @@ const QuestionDetailPage: React.FC = () => {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    if (questionId > 0) {
-      fetchQuestionData();
+    if (!id || isNaN(questionId) || questionId <= 0) {
+      setError('Invalid question ID');
+      setIsLoading(false);
+      return;
     }
-  }, [questionId]);
+    
+    fetchQuestionData();
+  }, [id, questionId]);
 
   const fetchQuestionData = async () => {
     setIsLoading(true);
@@ -28,6 +32,10 @@ const QuestionDetailPage: React.FC = () => {
     
     try {
       const response = await questionsApi.getQuestion(questionId);
+      
+      if (!response || !response.question) {
+        throw new Error('Invalid response from server');
+      }
       
       // Map the response data to our Question type
       const questionData: Question = {
@@ -44,19 +52,23 @@ const QuestionDetailPage: React.FC = () => {
       
       setQuestion(questionData);
       
-      // Map comments as well
-      const mappedComments = response.comments.map(c => ({
-        id: c.id,
-        content: c.content,
-        question_id: c.question_id,
-        user_id: 0, // Default value
-        username: '', // Default value
-        created_at: c.created_at,
-        updated_at: c.created_at, // Use created_at as update_at
-      }));
+      // Map comments with defensive checks
+      const mappedComments = Array.isArray(response.comments) 
+        ? response.comments.map(c => ({
+            id: c.id,
+            content: c.content,
+            question_id: c.question_id,
+            user_id: 0, // Default value
+            username: '', // Default value
+            created_at: c.created_at,
+            updated_at: c.created_at, // Use created_at as update_at
+          }))
+        : [];
       
       setComments(mappedComments);
-      setTags(response.tags);
+      
+      // Set tags with defensive check
+      setTags(Array.isArray(response.tags) ? response.tags : []);
     } catch (err) {
       console.error('Error fetching question:', err);
       setError('Failed to load the question. Please try again.');

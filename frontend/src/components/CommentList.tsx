@@ -5,20 +5,27 @@ interface CommentListProps {
   comments: Comment[];
 }
 
-const CommentList: React.FC<CommentListProps> = ({ comments }) => {
+const CommentList: React.FC<CommentListProps> = ({ comments = [] }) => {
   // Format date for better display
   const formatDate = (dateString: string) => {
-    const date = new Date(dateString);
-    return date.toLocaleDateString('en-US', {
-      year: 'numeric',
-      month: 'short',
-      day: 'numeric',
-      hour: '2-digit',
-      minute: '2-digit',
-    });
+    if (!dateString) return '';
+    
+    try {
+      const date = new Date(dateString);
+      return date.toLocaleDateString('en-US', {
+        year: 'numeric',
+        month: 'short',
+        day: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit',
+      });
+    } catch (e) {
+      console.error('Error formatting date:', e);
+      return dateString;
+    }
   };
 
-  if (comments.length === 0) {
+  if (!Array.isArray(comments) || comments.length === 0) {
     return (
       <div className="mt-4 text-gray-500 italic">
         No comments yet. Be the first to comment!
