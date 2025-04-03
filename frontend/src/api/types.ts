@@ -21,8 +21,10 @@ export interface Question {
   username: string;
   created_at: string;
   updated_at: string;
-  view_count: number;
-  like_count: number;
+  view_count?: number;
+  like_count?: number;
+  views_count?: number;
+  likes_count?: number;
   tags?: Tag[];
 }
 

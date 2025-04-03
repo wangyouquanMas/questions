@@ -19,8 +19,21 @@ const QuestionCard: React.FC<QuestionCardProps> = ({ question, tags = [] }) => {
   };
 
   // Format counter with singular/plural form
-  const formatCounter = (count: number, label: string) => {
+  const formatCounter = (count: number | undefined, label: string) => {
+    if (count === undefined) return `0 ${label}`;
     return `${count} ${count === 1 ? label.replace(/s$/, '') : label}`;
+  };
+
+  // Get view count from either field
+  const getViewCount = () => {
+    return question.view_count !== undefined ? question.view_count : 
+           question.views_count !== undefined ? question.views_count : 0;
+  };
+
+  // Get like count from either field
+  const getLikeCount = () => {
+    return question.like_count !== undefined ? question.like_count : 
+           question.likes_count !== undefined ? question.likes_count : 0;
   };
 
   return (
@@ -53,7 +66,7 @@ const QuestionCard: React.FC<QuestionCardProps> = ({ question, tags = [] }) => {
             <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-1 text-red-500" viewBox="0 0 20 20" fill="currentColor">
               <path fillRule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clipRule="evenodd" />
             </svg>
-            {formatCounter(question.like_count, 'likes')}
+            {formatCounter(getLikeCount(), 'likes')}
           </span>
           <span>,</span>
           <span className="flex items-center">
@@ -61,7 +74,7 @@ const QuestionCard: React.FC<QuestionCardProps> = ({ question, tags = [] }) => {
               <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
               <path fillRule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clipRule="evenodd" />
             </svg>
-            {formatCounter(question.view_count, 'views')}
+            {formatCounter(getViewCount(), 'views')}
           </span>
         </div>
         <span>Posted on {formatDate(question.created_at)}</span>
