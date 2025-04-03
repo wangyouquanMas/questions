@@ -50,9 +50,11 @@ const QuestionDetailPage: React.FC = () => {
         updated_at: apiQuestion.updated_at,
         user_id: 0, // Default value since not provided by API
         username: '', // Default value since not provided by API
-        // Use either field name that's available
-        view_count: apiQuestion.view_count !== undefined ? apiQuestion.view_count : apiQuestion.views_count,
-        like_count: apiQuestion.like_count !== undefined ? apiQuestion.like_count : apiQuestion.likes_count,
+        // Use either field name that's available with default to 0
+        view_count: apiQuestion.view_count !== undefined ? apiQuestion.view_count : 
+                    apiQuestion.views_count !== undefined ? apiQuestion.views_count : 0,
+        like_count: apiQuestion.like_count !== undefined ? apiQuestion.like_count : 
+                    apiQuestion.likes_count !== undefined ? apiQuestion.likes_count : 0,
         // Keep the original fields too for reference
         views_count: apiQuestion.views_count,
         likes_count: apiQuestion.likes_count
@@ -132,20 +134,20 @@ const QuestionDetailPage: React.FC = () => {
 
   // Format counter with singular/plural form
   const formatCounter = (count: number | undefined, label: string) => {
-    if (count === undefined) return `0 ${label}`;
-    return `${count} ${count === 1 ? label.replace(/s$/, '') : label}`;
+    const safeCount = count ?? 0;
+    return `${safeCount} ${safeCount === 1 ? label.replace(/s$/, '') : label}`;
   };
 
   // Get view count from either field
   const getViewCount = () => {
-    return question?.view_count !== undefined ? question.view_count : 
-           question?.views_count !== undefined ? question.views_count : 0;
+    if (!question) return 0;
+    return question.view_count ?? question.views_count ?? 0;
   };
 
   // Get like count from either field
   const getLikeCount = () => {
-    return question?.like_count !== undefined ? question.like_count : 
-           question?.likes_count !== undefined ? question.likes_count : 0;
+    if (!question) return 0;
+    return question.like_count ?? question.likes_count ?? 0;
   };
 
   if (isLoading) {

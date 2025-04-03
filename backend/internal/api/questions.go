@@ -594,14 +594,15 @@ func getQuestionComments(questionID int64) ([]models.Comment, error) {
 
 // Helper function to get count from Redis with fallback to database
 func getCountFromRedis(ctx context.Context, questionID int64, countType string) int {
-	// Try to get count from Redis
+	// Try to get count from Redis first
 	redisKey := fmt.Sprintf("question:%d:%s", questionID, countType)
 	count, err := db.Redis.Get(ctx, redisKey).Int()
 	if err == nil {
+		// We have a value in Redis, use it
 		return count
 	}
 
-	// Fallback to database if Redis fails
+	// No value in Redis or error, get from database
 	var dbCount int
 	var query string
 	if countType == "views" {
@@ -626,7 +627,25 @@ func incrementViewCount(questionID int64) {
 	ctx := context.Background()
 	redisKey := fmt.Sprintf("question:%d:views", questionID)
 
-	// Increment in Redis
+	// First check if the key exists in Redis
+	exists, err := db.Redis.Exists(ctx, redisKey).Result()
+	if err != nil {
+		fmt.Printf("Error checking if view key exists in Redis: %v\n", err)
+	}
+
+	// If key doesn't exist, get the current count from database first
+	if exists == 0 {
+		var dbCount int
+		err := db.DB.QueryRow("SELECT view_count FROM questions WHERE id = ?", questionID).Scan(&dbCount)
+		if err != nil {
+			fmt.Printf("Failed to get view count from database: %v\n", err)
+			dbCount = 0
+		}
+		// Initialize Redis with the database count
+		db.Redis.Set(ctx, redisKey, dbCount, 24*time.Hour)
+	}
+
+	// Now increment in Redis
 	newCount, err := db.Redis.Incr(ctx, redisKey).Result()
 	if err != nil {
 		fmt.Printf("Failed to increment view count in Redis: %v\n", err)

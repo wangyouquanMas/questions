@@ -20,20 +20,18 @@ const QuestionCard: React.FC<QuestionCardProps> = ({ question, tags = [] }) => {
 
   // Format counter with singular/plural form
   const formatCounter = (count: number | undefined, label: string) => {
-    if (count === undefined) return `0 ${label}`;
-    return `${count} ${count === 1 ? label.replace(/s$/, '') : label}`;
+    const safeCount = count ?? 0;
+    return `${safeCount} ${safeCount === 1 ? label.replace(/s$/, '') : label}`;
   };
 
   // Get view count from either field
   const getViewCount = () => {
-    return question.view_count !== undefined ? question.view_count : 
-           question.views_count !== undefined ? question.views_count : 0;
+    return question.view_count ?? question.views_count ?? 0;
   };
 
   // Get like count from either field
   const getLikeCount = () => {
-    return question.like_count !== undefined ? question.like_count : 
-           question.likes_count !== undefined ? question.likes_count : 0;
+    return question.like_count ?? question.likes_count ?? 0;
   };
 
   return (
