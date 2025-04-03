@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { questionsApi } from '../api/client';
+import ErrorMessage from '../components/ErrorMessage';
 
 const CreateQuestionPage: React.FC = () => {
   const navigate = useNavigate();
@@ -95,9 +96,7 @@ const CreateQuestionPage: React.FC = () => {
       <h1 className="text-2xl font-bold mb-6">Ask a Question</h1>
       
       {errors.submit && (
-        <div className="bg-red-100 text-red-700 p-4 rounded-lg mb-6">
-          {errors.submit}
-        </div>
+        <ErrorMessage message={errors.submit} retryFunction={() => handleSubmit} />
       )}
       
       <form onSubmit={handleSubmit}>

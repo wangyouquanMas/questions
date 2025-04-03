@@ -3,6 +3,7 @@ import { useParams, Link } from 'react-router-dom';
 import { questionsApi } from '../api/client';
 import CommentList from '../components/CommentList';
 import AddComment from '../components/AddComment';
+import ErrorMessage from '../components/ErrorMessage';
 import { Question, Comment, Tag } from '../api/types';
 
 const QuestionDetailPage: React.FC = () => {
@@ -111,6 +112,11 @@ const QuestionDetailPage: React.FC = () => {
     });
   };
 
+  // Format counter with singular/plural form
+  const formatCounter = (count: number, label: string) => {
+    return `${count} ${count === 1 ? label.replace(/s$/, '') : label}`;
+  };
+
   if (isLoading) {
     return (
       <div className="flex justify-center my-12">
@@ -121,14 +127,17 @@ const QuestionDetailPage: React.FC = () => {
 
   if (error || !question) {
     return (
-      <div className="bg-red-100 text-red-700 p-4 rounded-lg mb-6">
-        {error || 'Question not found'}
+      <>
+        <ErrorMessage 
+          message={error || 'Question not found'} 
+          retryFunction={id ? fetchQuestionData : undefined} 
+        />
         <div className="mt-4">
           <Link to="/" className="text-indigo-600 hover:underline">
             &larr; Back to questions
           </Link>
         </div>
-      </div>
+      </>
     );
   }
 
@@ -182,7 +191,7 @@ const QuestionDetailPage: React.FC = () => {
                 <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
                 <path fillRule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clipRule="evenodd" />
               </svg>
-              {question.view_count} views
+              {formatCounter(question.view_count, 'views')}
             </div>
             
             <button 
@@ -193,7 +202,7 @@ const QuestionDetailPage: React.FC = () => {
               <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-1 text-red-500" viewBox="0 0 20 20" fill="currentColor">
                 <path fillRule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clipRule="evenodd" />
               </svg>
-              {question.like_count} {question.like_count === 1 ? 'like' : 'likes'}
+              {formatCounter(question.like_count, 'likes')}
             </button>
           </div>
         </div>

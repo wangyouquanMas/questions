@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios, { AxiosError } from 'axios';
 import { 
   Question, 
   Tag, 
@@ -10,13 +10,44 @@ import {
   CreateCommentRequest 
 } from './types';
 
+// Get API URL from environment variables or default to localhost
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8081/api/v1';
+
+// Log which API URL we're using (helpful for debugging)
+console.log(`Using API URL: ${API_URL}`);
+
 // Create Axios instance with baseURL
 const apiClient = axios.create({
-  baseURL: 'http://localhost:8081/api/v1',
+  baseURL: API_URL,
   headers: {
     'Content-Type': 'application/json',
   },
+  // Add a timeout to avoid long-hanging requests
+  timeout: 10000, // 10 seconds
 });
+
+// Add response interceptor for error handling
+apiClient.interceptors.response.use(
+  response => response,
+  (error: AxiosError) => {
+    // Handle network errors more gracefully
+    if (error.code === 'ERR_NETWORK' || error.code === 'ECONNABORTED') {
+      console.error('Network error detected:', error.message);
+      // You could implement a custom retry logic here
+    }
+    
+    // Log all errors with details to help debugging
+    console.error('API request error:', {
+      url: error.config?.url,
+      method: error.config?.method,
+      status: error.response?.status,
+      message: error.message,
+      errorCode: error.code
+    });
+    
+    return Promise.reject(error);
+  }
+);
 
 // API interface for client-side interactions
 interface ApiQuestionsResponse {
@@ -79,8 +110,13 @@ export const questionsApi = {
     if (tag) params['tag'] = tag;
     if (search) params['search'] = search;
 
-    const response = await apiClient.get('/questions', { params });
-    return response.data;
+    try {
+      const response = await apiClient.get('/questions', { params });
+      return response.data;
+    } catch (error) {
+      console.error(`Error fetching questions:`, error);
+      throw error;
+    }
   },
 
   // Get a single question by ID
@@ -96,21 +132,47 @@ export const questionsApi = {
 
   // Create a new question
   createQuestion: async (question: CreateQuestionRequest): Promise<{ id: number; message: string }> => {
-    const response = await apiClient.post('/questions', question);
-    return response.data;
+    try {
+      const response = await apiClient.post('/questions', question);
+      return response.data;
+    } catch (error) {
+      console.error(`Error creating question:`, error);
+      throw error;
+    }
   },
 
   // Add a comment to a question
   addComment: async (questionId: number, content: string): Promise<{ message: string }> => {
-    const response = await apiClient.post(`/questions/${questionId}/comments`, { content });
-    return response.data;
+    try {
+      const response = await apiClient.post(`/questions/${questionId}/comments`, { content });
+      return response.data;
+    } catch (error) {
+      console.error(`Error adding comment to question ${questionId}:`, error);
+      throw error;
+    }
   },
 
   // Like a question
   likeQuestion: async (questionId: number): Promise<{ message: string }> => {
-    const response = await apiClient.post(`/questions/${questionId}/like`);
-    return response.data;
+    try {
+      const response = await apiClient.post(`/questions/${questionId}/like`);
+      return response.data;
+    } catch (error) {
+      console.error(`Error liking question ${questionId}:`, error);
+      throw error;
+    }
   },
+  
+  // Check if the API is available (can be used for health checks)
+  checkApiHealth: async (): Promise<boolean> => {
+    try {
+      await apiClient.get('/questions?page=1&limit=1');
+      return true;
+    } catch (error) {
+      console.error('API health check failed:', error);
+      return false;
+    }
+  }
 };
 
 export default apiClient; 

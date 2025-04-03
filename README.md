@@ -1,53 +1,85 @@
-# Questions Web Application
+# Questions Application
 
-A full-stack web application for managing questions, built with React, Golang, MySQL, and Redis.
+A React + Go application for asking and answering questions.
 
 ## Project Structure
+- `frontend/` - React frontend built with TypeScript, React Router, and Tailwind CSS
+- `backend/` - Go backend using Gin framework, MySQL, and Redis
 
-- `frontend/`: React frontend application
-- `backend/`: Golang backend API
+## Prerequisites
+- Node.js (v14+)
+- Go (v1.18+)
+- MySQL (v8+)
+- Redis (optional)
 
-## Backend
+## Running the Application
 
-The backend is built with Golang using:
-- Gin for HTTP routing
-- MySQL for persistent storage
-- Redis for caching
-- JWT for authentication
+### Backend
 
-### Setup
+1. Navigate to the backend directory:
+```bash
+cd backend
+```
 
-1. Ensure you have Go 1.21+ installed
-2. Navigate to the backend directory: `cd questions/backend`
-3. Install dependencies: `go mod tidy`
-4. Set up the environment variables by copying the example file: `cp .env.example .env` (if needed)
-5. Make sure MySQL and Redis are running
-6. Run the application: `go run cmd/main.go`
+2. Make sure MySQL is running on port 3307 or update the `.env` file with your MySQL configuration.
 
-The server will start on port 8080 (or the port specified in your .env file).
+3. Run the backend server:
+```bash
+go run cmd/main.go
+```
 
-## Frontend
+The backend will start on port 8081 by default (http://localhost:8081).
 
-The frontend is built with React, TypeScript, and Vite.
+### Frontend
 
-### Setup
+1. Navigate to the frontend directory:
+```bash
+cd frontend
+```
 
-1. Ensure you have Node.js 18+ installed
-2. Navigate to the frontend directory: `cd questions/frontend`
-3. Install dependencies: `npm install`
-4. Run the development server: `npm run dev`
+2. Install dependencies:
+```bash
+npm install
+```
 
-The frontend will be available at http://localhost:5173.
+3. Create a `.env` file (if not already present) with the following content:
+```bash
+VITE_API_URL=http://localhost:8081/api/v1
+```
 
-## API Endpoints
+4. Start the development server:
+```bash
+npm run dev
+```
 
-### Questions
+The frontend will start on port 5173 by default (http://localhost:5173).
 
-- `GET /api/v1/questions`: Get all questions with pagination, filtering, and sorting
-- `GET /api/v1/questions/:id`: Get a specific question by ID
-- `POST /api/v1/questions`: Create a new question
-- `POST /api/v1/questions/:id/comments`: Add a comment to a question
-- `POST /api/v1/questions/:id/like`: Like a question
+## Troubleshooting
+
+### Common Issues
+
+#### Backend Connection Error
+If you see "Network Error" or "Connection Refused" in the frontend:
+1. Check if the backend server is running on port 8081
+2. Run `go run cmd/main.go` in the backend directory
+3. Make sure your MySQL database is running (port 3307)
+
+#### Database Errors
+If the backend can't connect to the database:
+1. Check if MySQL is running on the configured port
+2. Update the database configuration in `backend/.env`
+
+## API Documentation
+
+### Endpoints
+
+- `GET /api/v1/questions` - Get all questions (with pagination and filtering)
+- `GET /api/v1/questions/:id` - Get a specific question
+- `POST /api/v1/questions` - Create a new question
+- `POST /api/v1/questions/:id/comments` - Add a comment to a question
+- `POST /api/v1/questions/:id/like` - Like a question
+
+For more details, see the [API documentation](./backend/docs/api.md).
 
 ## Development
 
@@ -70,3 +102,8 @@ Redis is used for caching. Make sure Redis is running on the host and port speci
 
 ### How to connect to mysql database 
 docker exec -it questions_mysql mysql -u questions_user -pquestions_password
+
+
+### TODO
+1. search by tag 
+2. support adding code in questions and answers 
