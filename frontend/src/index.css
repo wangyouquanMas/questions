@@ -17,6 +17,77 @@
     flex-direction: column;
     min-height: 100vh;
   }
+  
+  /* Styling for code elements */
+  code {
+    @apply bg-gray-100 text-red-600 px-1 py-0.5 rounded text-sm font-mono;
+  }
+  
+  pre {
+    @apply my-4 rounded-lg overflow-auto;
+  }
+  
+  pre > div {
+    @apply rounded-lg !important;
+  }
+  
+  /* Custom Syntax Highlighter Styles */
+  .syntax-highlight {
+    @apply bg-gray-900 rounded-lg my-4 overflow-auto relative;
+  }
+  
+  .language-tag {
+    @apply text-gray-300 font-mono text-xs py-1 px-4 bg-gray-800 border-b border-gray-700 text-right;
+  }
+  
+  .language-pre {
+    @apply m-0 p-4 overflow-auto font-mono text-sm text-left whitespace-pre leading-6;
+  }
+  
+  .syntax-highlight code {
+    @apply text-gray-300 bg-transparent p-0 rounded-none;
+  }
+  
+  /* Syntax highlighting tokens */
+  .token-keyword {
+    @apply text-purple-400;
+  }
+  
+  .token-string {
+    @apply text-green-300;
+  }
+  
+  .token-comment {
+    @apply text-gray-500 italic;
+  }
+  
+  .token-number {
+    @apply text-yellow-300;
+  }
+  
+  .token-tag {
+    @apply text-indigo-400;
+  }
+  
+  .token-attr-name {
+    @apply text-yellow-300;
+  }
+  
+  .token-attr-value {
+    @apply text-green-300;
+  }
+  
+  .token-selector {
+    @apply text-indigo-400;
+  }
+  
+  .token-property {
+    @apply text-yellow-300;
+  }
+  
+  .token-value {
+    @apply text-green-300;
+  }
 }
 
 @layer components {
@@ -50,5 +121,38 @@
 
   .error {
     @apply text-red-500 text-sm mt-1;
+  }
+  
+  /* Markdown content styles */
+  .prose h1 {
+    @apply text-2xl font-bold mb-4 mt-6;
+  }
+  
+  .prose h2 {
+    @apply text-xl font-bold mb-3 mt-5;
+  }
+  
+  .prose h3 {
+    @apply text-lg font-bold mb-2 mt-4;
+  }
+  
+  .prose ul {
+    @apply list-disc pl-5 mb-4;
+  }
+  
+  .prose ol {
+    @apply list-decimal pl-5 mb-4;
+  }
+  
+  .prose p {
+    @apply mb-4;
+  }
+  
+  .prose a {
+    @apply text-indigo-600 hover:text-indigo-800 underline;
+  }
+  
+  .prose blockquote {
+    @apply border-l-4 border-gray-300 pl-4 italic my-4;
   }
 }

@@ -4,6 +4,7 @@ import { questionsApi } from '../api/client';
 import CommentList from '../components/CommentList';
 import AddComment from '../components/AddComment';
 import ErrorMessage from '../components/ErrorMessage';
+import MarkdownRenderer from '../components/MarkdownRenderer';
 import { Question, Comment, Tag } from '../api/types';
 
 const QuestionDetailPage: React.FC = () => {
@@ -203,7 +204,7 @@ const QuestionDetailPage: React.FC = () => {
         )}
 
         <div className="prose max-w-none mb-6">
-          <p className="text-gray-700 whitespace-pre-line">{question.content}</p>
+          <MarkdownRenderer content={question.content} />
         </div>
 
         <div className="flex justify-between text-sm text-gray-500 border-t pt-4">

@@ -34,6 +34,26 @@ const QuestionCard: React.FC<QuestionCardProps> = ({ question, tags = [] }) => {
     return question.like_count ?? question.likes_count ?? 0;
   };
 
+  // Truncate and clean content for preview
+  const getContentPreview = () => {
+    // Remove markdown formatting characters
+    let cleanContent = question.content
+      .replace(/```[\s\S]*?```/g, '[代码块]') // Replace code blocks
+      .replace(/`([^`]+)`/g, '$1')           // Remove inline code backticks
+      .replace(/\*\*([^*]+)\*\*/g, '$1')     // Remove bold asterisks
+      .replace(/\*([^*]+)\*/g, '$1')         // Remove italic asterisks
+      .replace(/#+\s/g, '')                  // Remove headings
+      .replace(/\n/g, ' ')                   // Replace newlines with spaces
+      .trim();
+    
+    // Truncate to reasonable length
+    if (cleanContent.length > 150) {
+      cleanContent = cleanContent.substring(0, 150) + '...';
+    }
+    
+    return cleanContent;
+  };
+
   return (
     <div className="bg-white rounded-lg shadow-md p-6 mb-4 hover:shadow-lg transition-shadow">
       <Link to={`/questions/${question.id}`}>
@@ -42,7 +62,7 @@ const QuestionCard: React.FC<QuestionCardProps> = ({ question, tags = [] }) => {
         </h2>
       </Link>
       
-      <p className="text-gray-700 mb-4">{question.content}</p>
+      <p className="text-gray-700 mb-4">{getContentPreview()}</p>
       
       {tags && tags.length > 0 && (
         <div className="flex flex-wrap gap-2 mb-4">

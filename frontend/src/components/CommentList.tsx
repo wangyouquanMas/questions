@@ -1,5 +1,6 @@
 import React from 'react';
 import { Comment } from '../api/types';
+import MarkdownRenderer from './MarkdownRenderer';
 
 interface CommentListProps {
   comments: Comment[];
@@ -39,7 +40,9 @@ const CommentList: React.FC<CommentListProps> = ({ comments = [] }) => {
       <div className="space-y-4">
         {comments.map((comment) => (
           <div key={comment.id} className="bg-gray-50 p-4 rounded-lg">
-            <p className="text-gray-800">{comment.content}</p>
+            <div className="prose prose-sm max-w-none">
+              <MarkdownRenderer content={comment.content} />
+            </div>
             <p className="text-xs text-gray-500 mt-2">
               发布于 {formatDate(comment.created_at)}
             </p>

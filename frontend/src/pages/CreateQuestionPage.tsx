@@ -12,6 +12,7 @@ const CreateQuestionPage: React.FC = () => {
   const [tags, setTags] = useState<string[]>([]);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [errors, setErrors] = useState<Record<string, string>>({});
+  const [showFormatHelp, setShowFormatHelp] = useState(false);
 
   const addTag = () => {
     const trimmedTag = tagInput.trim().toLowerCase();
@@ -123,12 +124,44 @@ const CreateQuestionPage: React.FC = () => {
         <div className="mb-6">
           <label htmlFor="content" className="block text-gray-700 font-medium mb-2">
             内容 <span className="text-red-500">*</span>
+            <button 
+              type="button" 
+              className="ml-2 text-xs text-indigo-600 hover:text-indigo-800"
+              onClick={() => setShowFormatHelp(!showFormatHelp)}
+            >
+              {showFormatHelp ? '隐藏格式帮助' : '显示格式帮助'}
+            </button>
           </label>
+          
+          {showFormatHelp && (
+            <div className="mb-3 bg-gray-50 p-3 rounded-lg text-sm">
+              <p className="font-semibold mb-1">支持 Markdown 格式:</p>
+              <ul className="list-disc pl-5 space-y-1">
+                <li>使用 # 表示标题（## 二级标题，### 三级标题）</li>
+                <li>使用 **文本** 表示<strong>加粗</strong></li>
+                <li>使用 *文本* 表示<em>斜体</em></li>
+                <li>使用 - 或 * 创建列表项</li>
+                <li>插入代码块使用三个反引号({"`"}```{"`"})：
+                  <pre className="bg-gray-100 p-2 mt-1 rounded">
+                    {"`"}```javascript<br/>
+                    // 这是一段JavaScript代码示例<br/>
+                    function hello() {"{"}<br/>
+                    &nbsp;&nbsp;console.log("Hello world!");<br/>
+                    {"}"}<br/>
+                    {"`"}```
+                  </pre>
+                </li>
+                <li>支持的语言有：javascript, typescript, html, css, java, python, c, cpp等</li>
+                <li>行内代码使用一个反引号: {"`"}code{"`"}</li>
+              </ul>
+            </div>
+          )}
+          
           <textarea
             id="content"
             rows={10}
             placeholder="提供回答者需要的所有细节..."
-            className={`w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 ${
+            className={`w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 font-mono ${
               errors.content ? 'border-red-500' : 'border-gray-300'
             }`}
             value={content}

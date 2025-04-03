@@ -1,10 +1,11 @@
 package router
 
 import (
+	"time"
+
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
 	"github.com/questions/backend/internal/api"
-	"time"
 )
 
 // SetupRouter configures the application's routes
@@ -16,7 +17,7 @@ func SetupRouter() *gin.Engine {
 
 	// Configure CORS
 	r.Use(cors.New(cors.Config{
-		AllowOrigins:     []string{"http://localhost:5173"}, // Frontend URL
+		AllowOrigins:     []string{"http://localhost:5173", "http://localhost:5174", "http://localhost:5175", "http://localhost:5176", "http://localhost:5177", "http://localhost:3000"}, // Allow multiple frontend URLs
 		AllowMethods:     []string{"GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"},
 		AllowHeaders:     []string{"Origin", "Content-Type", "Accept", "Authorization"},
 		ExposeHeaders:    []string{"Content-Length", "Content-Type"},
@@ -43,4 +44,4 @@ func SetupRouter() *gin.Engine {
 	}
 
 	return r
-} 
+}
