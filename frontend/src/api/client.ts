@@ -153,7 +153,7 @@ export const questionsApi = {
   },
 
   // Like a question
-  likeQuestion: async (questionId: number): Promise<{ message: string }> => {
+  likeQuestion: async (questionId: number): Promise<{ message: string, liked: boolean, like_count: number }> => {
     try {
       const response = await apiClient.post(`/questions/${questionId}/like`);
       return response.data;

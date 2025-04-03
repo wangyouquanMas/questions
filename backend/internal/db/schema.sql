@@ -29,10 +29,11 @@ CREATE TABLE comments (
 CREATE TABLE likes (
     id INT AUTO_INCREMENT PRIMARY KEY,
     question_id INT NOT NULL,
+    client_ip VARCHAR(45) NOT NULL, -- IPv6 addresses can be up to 45 chars
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (question_id) REFERENCES questions(id) ON DELETE CASCADE,
-    -- Each like should be unique (we're not tracking users, so this is a simplification)
-    UNIQUE KEY unique_like (question_id)
+    -- Each like should be unique per IP address
+    UNIQUE KEY unique_like (question_id, client_ip)
 );
 
 -- Tags table
@@ -100,5 +101,9 @@ INSERT INTO comments (question_id, content) VALUES
 (5, 'Start with index funds if you\'re a beginner.');
 
 -- Insert some sample likes
-INSERT INTO likes (question_id) VALUES
-(1), (2), (3), (4), (5); 
+INSERT INTO likes (question_id, client_ip) VALUES
+(1, '127.0.0.1'), 
+(2, '127.0.0.1'), 
+(3, '127.0.0.1'), 
+(4, '127.0.0.1'), 
+(5, '127.0.0.1'); 

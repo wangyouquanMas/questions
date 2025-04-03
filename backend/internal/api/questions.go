@@ -418,7 +418,7 @@ func AddComment(c *gin.Context) {
 	c.JSON(http.StatusCreated, gin.H{"message": "Comment added successfully"})
 }
 
-// LikeQuestion handles adding a like to a question
+// LikeQuestion handles toggling a like on a question (add or remove)
 func LikeQuestion(c *gin.Context) {
 	questionID, err := strconv.ParseInt(c.Param("id"), 10, 64)
 	if err != nil {
@@ -443,19 +443,17 @@ func LikeQuestion(c *gin.Context) {
 		return
 	}
 
-	// Check if already liked
-	var alreadyLiked bool
-	err = db.DB.QueryRow("SELECT EXISTS(SELECT 1 FROM likes WHERE question_id = ?)", questionID).Scan(&alreadyLiked)
-	if err != nil {
-		fmt.Printf("Error checking if already liked: %v\n", err)
-		c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to check like status"})
-		return
-	}
+	// Get client IP to identify the liker
+	clientIP := c.ClientIP()
+	fmt.Printf("Client IP: %s\n", clientIP)
 
-	// If already liked, just return success
-	if alreadyLiked {
-		fmt.Printf("Question ID %d already liked\n", questionID)
-		c.JSON(http.StatusOK, gin.H{"message": "Question already liked"})
+	// Check if this IP has already liked this question
+	var alreadyLiked bool
+	err = db.DB.QueryRow("SELECT EXISTS(SELECT 1 FROM likes WHERE question_id = ? AND client_ip = ?)",
+		questionID, clientIP).Scan(&alreadyLiked)
+	if err != nil {
+		fmt.Printf("Error checking like status in database: %v\n", err)
+		c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to check like status"})
 		return
 	}
 
@@ -468,12 +466,44 @@ func LikeQuestion(c *gin.Context) {
 	}
 	defer tx.Rollback()
 
-	// Insert like
-	_, err = tx.Exec("INSERT INTO likes (question_id) VALUES (?)", questionID)
-	if err != nil {
-		fmt.Printf("Error inserting like: %v\n", err)
-		c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to add like"})
-		return
+	var action string
+
+	if !alreadyLiked {
+		// Not liked yet, add like
+		_, err = tx.Exec("INSERT INTO likes (question_id, client_ip) VALUES (?, ?)", questionID, clientIP)
+		if err != nil {
+			fmt.Printf("Error inserting like: %v\n", err)
+			c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to add like"})
+			return
+		}
+
+		// Update the like count in the questions table
+		_, err = tx.Exec("UPDATE questions SET like_count = like_count + 1 WHERE id = ?", questionID)
+		if err != nil {
+			fmt.Printf("Error updating like count: %v\n", err)
+			c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to update like count"})
+			return
+		}
+
+		action = "added"
+	} else {
+		// Already liked, remove like
+		_, err = tx.Exec("DELETE FROM likes WHERE question_id = ? AND client_ip = ?", questionID, clientIP)
+		if err != nil {
+			fmt.Printf("Error removing like: %v\n", err)
+			c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to remove like"})
+			return
+		}
+
+		// Update the like count in the questions table (ensure it doesn't go below 0)
+		_, err = tx.Exec("UPDATE questions SET like_count = GREATEST(like_count - 1, 0) WHERE id = ?", questionID)
+		if err != nil {
+			fmt.Printf("Error updating like count: %v\n", err)
+			c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to update like count"})
+			return
+		}
+
+		action = "removed"
 	}
 
 	// Commit the transaction
@@ -483,16 +513,29 @@ func LikeQuestion(c *gin.Context) {
 		return
 	}
 
-	// Increment like count in Redis
-	go incrementLikeCount(questionID)
+	fmt.Printf("Successfully %s like for question ID: %d from IP: %s\n", action, questionID, clientIP)
 
-	fmt.Printf("Successfully liked question ID: %d\n", questionID)
+	// Get the updated like count
+	var likeCount int
+	err = db.DB.QueryRow("SELECT like_count FROM questions WHERE id = ?", questionID).Scan(&likeCount)
+	if err != nil {
+		fmt.Printf("Error getting updated like count: %v\n", err)
+	}
 
-	// Invalidate cache
+	// Update Redis with the new count
+	ctx := context.Background()
+	redisKey := fmt.Sprintf("question:%d:likes", questionID)
+	db.Redis.Set(ctx, redisKey, likeCount, 24*time.Hour)
+
+	// Invalidate question cache
 	cacheKey := fmt.Sprintf("question:%d", questionID)
-	db.Redis.Del(context.Background(), cacheKey)
+	db.Redis.Del(ctx, cacheKey)
 
-	c.JSON(http.StatusOK, gin.H{"message": "Question liked successfully"})
+	c.JSON(http.StatusOK, gin.H{
+		"message":    fmt.Sprintf("Question like %s successfully", action),
+		"liked":      action == "added",
+		"like_count": likeCount,
+	})
 }
 
 // Helper function to get tags for a question
@@ -606,30 +649,6 @@ func incrementViewCount(questionID int64) {
 		if err != nil {
 			fmt.Printf("Failed to update view count in database: %v\n", err)
 		}
-	}
-}
-
-// Helper function to increment like count
-func incrementLikeCount(questionID int64) {
-	ctx := context.Background()
-	redisKey := fmt.Sprintf("question:%d:likes", questionID)
-
-	// Increment in Redis
-	newCount, err := db.Redis.Incr(ctx, redisKey).Result()
-	if err != nil {
-		fmt.Printf("Failed to increment like count in Redis: %v\n", err)
-		return
-	}
-
-	// Set expiration if this is a new key
-	if newCount == 1 {
-		db.Redis.Expire(ctx, redisKey, 24*time.Hour)
-	}
-
-	// Update the database immediately for likes
-	_, err = db.DB.Exec("UPDATE questions SET like_count = ? WHERE id = ?", newCount, questionID)
-	if err != nil {
-		fmt.Printf("Failed to update like count in database: %v\n", err)
 	}
 }
 

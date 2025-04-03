@@ -94,10 +94,18 @@ const QuestionDetailPage: React.FC = () => {
     setIsLiking(true);
     
     try {
-      await questionsApi.likeQuestion(questionId);
+      const response = await questionsApi.likeQuestion(questionId);
       
-      // Refresh question data to get updated like count
-      fetchQuestionData();
+      // Update the question state directly with the new like count
+      setQuestion(prev => {
+        if (!prev) return prev;
+        
+        return {
+          ...prev,
+          like_count: response.like_count,
+          likes_count: response.like_count
+        };
+      });
     } catch (err) {
       console.error('Error liking question:', err);
       alert('Failed to like the question. Please try again.');
