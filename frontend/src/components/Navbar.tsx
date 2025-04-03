@@ -18,10 +18,10 @@ const Navbar: React.FC = () => {
         <div className="flex items-center justify-between">
           <div className="flex items-center space-x-4">
             <Link to="/" className="text-2xl font-bold hover:text-indigo-200">
-              Questions
+              问题
             </Link>
             <Link to="/" className="hover:text-indigo-200">
-              Home
+              首页
             </Link>
           </div>
 
@@ -30,7 +30,7 @@ const Navbar: React.FC = () => {
               <div className="relative">
                 <input
                   type="text"
-                  placeholder="Search questions..."
+                  placeholder="搜索问题..."
                   className="w-full py-2 px-4 rounded-lg text-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500"
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
@@ -39,7 +39,7 @@ const Navbar: React.FC = () => {
                   type="submit"
                   className="absolute right-0 top-0 h-full px-4 py-2 bg-indigo-500 rounded-r-lg hover:bg-indigo-600 focus:outline-none"
                 >
-                  Search
+                  搜索
                 </button>
               </div>
             </form>
@@ -50,7 +50,7 @@ const Navbar: React.FC = () => {
               to="/ask"
               className="bg-indigo-500 hover:bg-indigo-600 text-white font-semibold py-2 px-4 rounded-lg shadow-md hover:shadow-lg transition duration-300"
             >
-              Ask Question
+              提问
             </Link>
           </div>
         </div>

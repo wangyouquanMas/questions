@@ -45,7 +45,7 @@ const HomePage: React.FC = () => {
 
   const fetchQuestions = async () => {
     if (backendStatus === 'disconnected') {
-      setError('Cannot connect to the backend server. Please check if it is running.');
+      setError('无法连接到后端服务器。请检查服务器是否运行。');
       setIsLoading(false);
       return;
     }
@@ -125,12 +125,12 @@ const HomePage: React.FC = () => {
       // Check for network error specifically
       if (err.code === 'ERR_NETWORK' || err.message?.includes('Network Error')) {
         setBackendStatus('disconnected');
-        setError('Network Error: Cannot connect to the backend server. Please check if it is running at http://localhost:8081.');
+        setError('网络错误：无法连接到后端服务器。请检查服务器是否在 http://localhost:8081 上运行。');
       } else {
         // More detailed error message for other errors
         const errorMessage = err.response 
-          ? `Server error: ${err.response.status} - ${err.response.data?.error || 'Unknown error'}`
-          : err.message || 'Error connecting to the server. Please try again later.';
+          ? `服务器错误: ${err.response.status} - ${err.response.data?.error || '未知错误'}`
+          : err.message || '连接服务器时出错。请稍后再试。';
         setError(errorMessage);
       }
     } finally {
@@ -169,7 +169,7 @@ const HomePage: React.FC = () => {
           }}
           className="px-3 py-1 mx-1 bg-gray-200 rounded hover:bg-gray-300"
         >
-          &laquo; Previous
+          &laquo; 上一页
         </button>
       );
     }
@@ -209,7 +209,7 @@ const HomePage: React.FC = () => {
           }}
           className="px-3 py-1 mx-1 bg-gray-200 rounded hover:bg-gray-300"
         >
-          Next &raquo;
+          下一页 &raquo;
         </button>
       );
     }
@@ -221,15 +221,15 @@ const HomePage: React.FC = () => {
     <div>
       <div className="flex justify-between items-center mb-6">
         <h1 className="text-2xl font-bold">
-          {tag ? `Questions tagged "${tag}"` : 
-           search ? `Search results for "${search}"` : 
-           'Recent Questions'}
+          {tag ? `标签为 "${tag}" 的问题` : 
+           search ? `搜索结果： "${search}"` : 
+           '最近的问题'}
         </h1>
         
         <div className="flex items-center space-x-4">
           {/* Backend status indicator */}
           <div className="flex items-center">
-            <span className="text-sm text-gray-600 mr-2">Backend:</span>
+            <span className="text-sm text-gray-600 mr-2">后端状态:</span>
             <span 
               className={`inline-block w-3 h-3 rounded-full ${
                 backendStatus === 'connected' 
@@ -241,15 +241,15 @@ const HomePage: React.FC = () => {
             ></span>
             <span className="ml-1 text-xs text-gray-500">
               {backendStatus === 'connected' 
-                ? 'Connected' 
+                ? '已连接' 
                 : backendStatus === 'checking' 
-                  ? 'Checking...' 
-                  : 'Disconnected'}
+                  ? '检查中...' 
+                  : '未连接'}
             </span>
           </div>
           
           <div>
-            <label htmlFor="sort" className="mr-2 text-sm text-gray-600">Sort by:</label>
+            <label htmlFor="sort" className="mr-2 text-sm text-gray-600">排序方式:</label>
             <select
               id="sort"
               value={sort}
@@ -257,14 +257,14 @@ const HomePage: React.FC = () => {
               className="border rounded p-1 text-sm"
               disabled={backendStatus !== 'connected'}
             >
-              <option value="created_at">Date</option>
-              <option value="like_count">Likes</option>
-              <option value="view_count">Views</option>
+              <option value="created_at">日期</option>
+              <option value="like_count">点赞</option>
+              <option value="view_count">浏览量</option>
             </select>
           </div>
           
           <div>
-            <label htmlFor="order" className="mr-2 text-sm text-gray-600">Order:</label>
+            <label htmlFor="order" className="mr-2 text-sm text-gray-600">顺序:</label>
             <select
               id="order"
               value={order}
@@ -272,8 +272,8 @@ const HomePage: React.FC = () => {
               className="border rounded p-1 text-sm"
               disabled={backendStatus !== 'connected'}
             >
-              <option value="desc">Descending</option>
-              <option value="asc">Ascending</option>
+              <option value="desc">降序</option>
+              <option value="asc">升序</option>
             </select>
           </div>
         </div>
@@ -287,8 +287,8 @@ const HomePage: React.FC = () => {
         <ErrorMessage message={error} retryFunction={fetchQuestions} />
       ) : questions.length === 0 ? (
         <div className="bg-yellow-100 text-yellow-800 p-4 rounded-lg mb-6">
-          No questions found. Try adjusting your search criteria or {' '}
-          <a href="/ask" className="underline">ask a new question</a>.
+          没有找到问题。请调整搜索条件或 {' '}
+          <a href="/ask" className="underline">提出一个新问题</a>。
         </div>
       ) : (
         <>

@@ -11,9 +11,9 @@ const QuestionCard: React.FC<QuestionCardProps> = ({ question, tags = [] }) => {
   // Format date for better display
   const formatDate = (dateString: string) => {
     const date = new Date(dateString);
-    return date.toLocaleDateString('en-US', {
+    return date.toLocaleDateString('zh-CN', {
       year: 'numeric',
-      month: 'short',
+      month: 'long',
       day: 'numeric',
     });
   };
@@ -21,7 +21,7 @@ const QuestionCard: React.FC<QuestionCardProps> = ({ question, tags = [] }) => {
   // Format counter with singular/plural form
   const formatCounter = (count: number | undefined, label: string) => {
     const safeCount = count ?? 0;
-    return `${safeCount} ${safeCount === 1 ? label.replace(/s$/, '') : label}`;
+    return `${safeCount} ${label}`;
   };
 
   // Get view count from either field
@@ -64,7 +64,7 @@ const QuestionCard: React.FC<QuestionCardProps> = ({ question, tags = [] }) => {
             <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-1 text-red-500" viewBox="0 0 20 20" fill="currentColor">
               <path fillRule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clipRule="evenodd" />
             </svg>
-            {formatCounter(getLikeCount(), 'likes')}
+            {formatCounter(getLikeCount(), '赞')}
           </span>
           <span>,</span>
           <span className="flex items-center">
@@ -72,10 +72,10 @@ const QuestionCard: React.FC<QuestionCardProps> = ({ question, tags = [] }) => {
               <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
               <path fillRule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clipRule="evenodd" />
             </svg>
-            {formatCounter(getViewCount(), 'views')}
+            {formatCounter(getViewCount(), '浏览')}
           </span>
         </div>
-        <span>Posted on {formatDate(question.created_at)}</span>
+        <span>发布于 {formatDate(question.created_at)}</span>
       </div>
     </div>
   );

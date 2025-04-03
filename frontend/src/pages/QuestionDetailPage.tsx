@@ -19,7 +19,7 @@ const QuestionDetailPage: React.FC = () => {
 
   useEffect(() => {
     if (!id || isNaN(questionId) || questionId <= 0) {
-      setError('Invalid question ID');
+      setError('无效的问题ID');
       setIsLoading(false);
       return;
     }
@@ -35,7 +35,7 @@ const QuestionDetailPage: React.FC = () => {
       const response = await questionsApi.getQuestion(questionId);
       
       if (!response || !response.question) {
-        throw new Error('Invalid response from server');
+        throw new Error('服务器响应无效');
       }
       
       // Check which fields are available in the response
@@ -84,7 +84,7 @@ const QuestionDetailPage: React.FC = () => {
       setTags(Array.isArray(response.tags) ? response.tags : []);
     } catch (err) {
       console.error('Error fetching question:', err);
-      setError('Failed to load the question. Please try again.');
+      setError('加载问题失败，请重试。');
     } finally {
       setIsLoading(false);
     }
@@ -110,7 +110,7 @@ const QuestionDetailPage: React.FC = () => {
       });
     } catch (err) {
       console.error('Error liking question:', err);
-      alert('Failed to like the question. Please try again.');
+      alert('点赞失败，请重试。');
     } finally {
       setIsLiking(false);
     }
@@ -123,9 +123,9 @@ const QuestionDetailPage: React.FC = () => {
 
   const formatDate = (dateString: string) => {
     const date = new Date(dateString);
-    return date.toLocaleDateString('en-US', {
+    return date.toLocaleDateString('zh-CN', {
       year: 'numeric',
-      month: 'short',
+      month: 'long',
       day: 'numeric',
       hour: '2-digit',
       minute: '2-digit'
@@ -135,7 +135,7 @@ const QuestionDetailPage: React.FC = () => {
   // Format counter with singular/plural form
   const formatCounter = (count: number | undefined, label: string) => {
     const safeCount = count ?? 0;
-    return `${safeCount} ${safeCount === 1 ? label.replace(/s$/, '') : label}`;
+    return `${safeCount} ${label}`;
   };
 
   // Get view count from either field
@@ -162,12 +162,12 @@ const QuestionDetailPage: React.FC = () => {
     return (
       <>
         <ErrorMessage 
-          message={error || 'Question not found'} 
+          message={error || '未找到问题'} 
           retryFunction={id ? fetchQuestionData : undefined} 
         />
         <div className="mt-4">
           <Link to="/" className="text-indigo-600 hover:underline">
-            &larr; Back to questions
+            &larr; 返回问题列表
           </Link>
         </div>
       </>
@@ -181,7 +181,7 @@ const QuestionDetailPage: React.FC = () => {
           <svg className="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
           </svg>
-          Back to questions
+          返回问题列表
         </Link>
       </div>
 
@@ -209,11 +209,11 @@ const QuestionDetailPage: React.FC = () => {
         <div className="flex justify-between text-sm text-gray-500 border-t pt-4">
           <div className="flex items-center">
             <span className="mr-4">
-              Posted on {formatDate(question.created_at)}
+              发布于 {formatDate(question.created_at)}
             </span>
             {question.updated_at !== question.created_at && (
               <span>
-                Updated on {formatDate(question.updated_at)}
+                更新于 {formatDate(question.updated_at)}
               </span>
             )}
           </div>
@@ -224,7 +224,7 @@ const QuestionDetailPage: React.FC = () => {
                 <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
                 <path fillRule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clipRule="evenodd" />
               </svg>
-              {formatCounter(getViewCount(), 'views')}
+              {formatCounter(getViewCount(), '浏览')}
             </div>
             
             <button 
@@ -235,7 +235,7 @@ const QuestionDetailPage: React.FC = () => {
               <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-1 text-red-500" viewBox="0 0 20 20" fill="currentColor">
                 <path fillRule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clipRule="evenodd" />
               </svg>
-              {formatCounter(getLikeCount(), 'likes')}
+              {formatCounter(getLikeCount(), '赞')}
             </button>
           </div>
         </div>

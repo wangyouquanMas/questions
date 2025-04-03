@@ -19,12 +19,12 @@ const CreateQuestionPage: React.FC = () => {
     if (!trimmedTag) return;
     
     if (tags.includes(trimmedTag)) {
-      setErrors({ ...errors, tags: "This tag is already added" });
+      setErrors({ ...errors, tags: "该标签已添加" });
       return;
     }
     
     if (tags.length >= 5) {
-      setErrors({ ...errors, tags: "You can add at most 5 tags" });
+      setErrors({ ...errors, tags: "最多可添加5个标签" });
       return;
     }
     
@@ -41,17 +41,17 @@ const CreateQuestionPage: React.FC = () => {
     const newErrors: Record<string, string> = {};
     
     if (!title.trim()) {
-      newErrors.title = "Title is required";
+      newErrors.title = "标题不能为空";
     } else if (title.length < 10) {
-      newErrors.title = "Title must be at least 10 characters";
+      newErrors.title = "标题至少需要10个字符";
     } else if (title.length > 100) {
-      newErrors.title = "Title must be at most 100 characters";
+      newErrors.title = "标题最多100个字符";
     }
     
     if (!content.trim()) {
-      newErrors.content = "Question content is required";
+      newErrors.content = "问题内容不能为空";
     } else if (content.length < 30) {
-      newErrors.content = "Question content must be at least 30 characters";
+      newErrors.content = "问题内容至少需要30个字符";
     }
     
     setErrors(newErrors);
@@ -78,7 +78,7 @@ const CreateQuestionPage: React.FC = () => {
       console.error('Error creating question:', err);
       setErrors({
         ...errors,
-        submit: "Failed to create the question. Please try again."
+        submit: "创建问题失败。请重试。"
       });
       setIsSubmitting(false);
     }
@@ -93,7 +93,7 @@ const CreateQuestionPage: React.FC = () => {
 
   return (
     <div className="max-w-3xl mx-auto">
-      <h1 className="text-2xl font-bold mb-6">Ask a Question</h1>
+      <h1 className="text-2xl font-bold mb-6">提出问题</h1>
       
       {errors.submit && (
         <ErrorMessage message={errors.submit} retryFunction={() => handleSubmit} />
@@ -102,12 +102,12 @@ const CreateQuestionPage: React.FC = () => {
       <form onSubmit={handleSubmit}>
         <div className="mb-6">
           <label htmlFor="title" className="block text-gray-700 font-medium mb-2">
-            Title <span className="text-red-500">*</span>
+            标题 <span className="text-red-500">*</span>
           </label>
           <input
             type="text"
             id="title"
-            placeholder="What's your question? Be specific."
+            placeholder="您的问题是什么？请具体描述。"
             className={`w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 ${
               errors.title ? 'border-red-500' : 'border-gray-300'
             }`}
@@ -122,12 +122,12 @@ const CreateQuestionPage: React.FC = () => {
         
         <div className="mb-6">
           <label htmlFor="content" className="block text-gray-700 font-medium mb-2">
-            Content <span className="text-red-500">*</span>
+            内容 <span className="text-red-500">*</span>
           </label>
           <textarea
             id="content"
             rows={10}
-            placeholder="Provide all the details someone would need to answer your question..."
+            placeholder="提供回答者需要的所有细节..."
             className={`w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 ${
               errors.content ? 'border-red-500' : 'border-gray-300'
             }`}
@@ -142,13 +142,13 @@ const CreateQuestionPage: React.FC = () => {
         
         <div className="mb-6">
           <label htmlFor="tags" className="block text-gray-700 font-medium mb-2">
-            Tags (up to 5)
+            标签（最多5个）
           </label>
           <div className="flex">
             <input
               type="text"
               id="tags"
-              placeholder="Add a tag..."
+              placeholder="添加标签..."
               className={`flex-1 p-3 border rounded-l-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 ${
                 errors.tags ? 'border-red-500' : 'border-gray-300'
               }`}
@@ -163,7 +163,7 @@ const CreateQuestionPage: React.FC = () => {
               className="bg-indigo-600 text-white px-4 rounded-r-lg hover:bg-indigo-700 focus:outline-none disabled:opacity-50"
               disabled={isSubmitting || !tagInput.trim() || tags.length >= 5}
             >
-              Add
+              添加
             </button>
           </div>
           {errors.tags && (
@@ -195,7 +195,7 @@ const CreateQuestionPage: React.FC = () => {
             className="bg-indigo-600 text-white py-2 px-6 rounded-lg hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 disabled:opacity-50"
             disabled={isSubmitting}
           >
-            {isSubmitting ? 'Submitting...' : 'Post Your Question'}
+            {isSubmitting ? '提交中...' : '发布您的问题'}
           </button>
           <button
             type="button"
@@ -203,7 +203,7 @@ const CreateQuestionPage: React.FC = () => {
             className="border border-gray-300 bg-white text-gray-700 py-2 px-6 rounded-lg hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-gray-500"
             disabled={isSubmitting}
           >
-            Cancel
+            取消
           </button>
         </div>
       </form>
