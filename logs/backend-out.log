@@ -1,0 +1,872 @@
+2025-04-04T14:41:05: [GIN-debug] [WARNING] Creating an Engine instance with the Logger and Recovery middleware already attached.
+2025-04-04T14:41:05: 
+2025-04-04T14:41:05: [GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+2025-04-04T14:41:05:  - using env:	export GIN_MODE=release
+2025-04-04T14:41:05:  - using code:	gin.SetMode(gin.ReleaseMode)
+2025-04-04T14:41:05: 
+2025-04-04T14:41:05: [GIN-debug] GET    /api/v1/questions         --> github.com/questions/backend/internal/api.GetQuestions (4 handlers)
+2025-04-04T14:41:05: [GIN-debug] GET    /api/v1/questions/:id     --> github.com/questions/backend/internal/api.GetQuestion (4 handlers)
+2025-04-04T14:41:05: [GIN-debug] POST   /api/v1/questions         --> github.com/questions/backend/internal/api.CreateQuestion (4 handlers)
+2025-04-04T14:41:05: [GIN-debug] POST   /api/v1/questions/:id/comments --> github.com/questions/backend/internal/api.AddComment (4 handlers)
+2025-04-04T14:41:05: [GIN-debug] POST   /api/v1/questions/:id/like --> github.com/questions/backend/internal/api.LikeQuestion (4 handlers)
+2025-04-04T14:41:05: [GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+2025-04-04T14:41:05: Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
+2025-04-04T14:41:05: [GIN-debug] Listening and serving HTTP on :8081
+2025-04-04T14:41:21: [GIN-debug] [WARNING] Creating an Engine instance with the Logger and Recovery middleware already attached.
+2025-04-04T14:41:21: 
+2025-04-04T14:41:21: [GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+2025-04-04T14:41:21:  - using env:	export GIN_MODE=release
+2025-04-04T14:41:21:  - using code:	gin.SetMode(gin.ReleaseMode)
+2025-04-04T14:41:21: 
+2025-04-04T14:41:21: [GIN-debug] GET    /api/v1/questions         --> github.com/questions/backend/internal/api.GetQuestions (4 handlers)
+2025-04-04T14:41:21: [GIN-debug] GET    /api/v1/questions/:id     --> github.com/questions/backend/internal/api.GetQuestion (4 handlers)
+2025-04-04T14:41:21: [GIN-debug] POST   /api/v1/questions         --> github.com/questions/backend/internal/api.CreateQuestion (4 handlers)
+2025-04-04T14:41:21: [GIN-debug] POST   /api/v1/questions/:id/comments --> github.com/questions/backend/internal/api.AddComment (4 handlers)
+2025-04-04T14:41:21: [GIN-debug] POST   /api/v1/questions/:id/like --> github.com/questions/backend/internal/api.LikeQuestion (4 handlers)
+2025-04-04T14:41:21: [GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+2025-04-04T14:41:21: Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
+2025-04-04T14:41:21: [GIN-debug] Listening and serving HTTP on :8081
+2025-04-04T14:41:27: GetQuestions called with params: page=1, limit=1, sort=created_at, order=desc, tag=, search=
+2025-04-04T14:41:27: Debug - Base SQL Query: SELECT q.id, q.title, q.content, q.created_at, q.updated_at, q.like_count, q.view_count FROM questions q ORDER BY q.created_at desc LIMIT ? OFFSET ?
+2025-04-04T14:41:27: Debug - Count SQL Query: SELECT COUNT(*) FROM questions q
+2025-04-04T14:41:27: Debug - Args: [1 0]
+2025-04-04T14:41:27: [GIN] 2025/04/04 - 14:41:27 | 200 |    7.110523ms |       127.0.0.1 | GET      "/api/v1/questions?page=1&limit=1"
+2025-04-04T14:41:55: GetQuestions called with params: page=1, limit=1, sort=created_at, order=desc, tag=, search=
+2025-04-04T14:41:55: Debug - Base SQL Query: SELECT q.id, q.title, q.content, q.created_at, q.updated_at, q.like_count, q.view_count FROM questions q ORDER BY q.created_at desc LIMIT ? OFFSET ?
+2025-04-04T14:41:55: Debug - Count SQL Query: SELECT COUNT(*) FROM questions q
+2025-04-04T14:41:55: Debug - Args: [1 0]
+2025-04-04T14:41:55: [GIN] 2025/04/04 - 14:41:55 | 200 |    2.636207ms |       127.0.0.1 | GET      "/api/v1/questions?page=1&limit=1"
+2025-04-04T14:42:03: [GIN] 2025/04/04 - 14:42:03 | 403 |      34.781µs |       127.0.0.1 | OPTIONS  "/api/v1/questions?page=1&limit=10&sort=created_at&order=desc"
+2025-04-04T14:42:03: [GIN] 2025/04/04 - 14:42:03 | 403 |      17.286µs |       127.0.0.1 | OPTIONS  "/api/v1/questions?page=1&limit=1"
+2025-04-04T14:42:03: [GIN] 2025/04/04 - 14:42:03 | 403 |       2.498µs |       127.0.0.1 | GET      "/api/v1/questions?page=1&limit=10&sort=created_at&order=desc"
+2025-04-04T14:42:03: [GIN] 2025/04/04 - 14:42:03 | 403 |         2.9µs |       127.0.0.1 | GET      "/api/v1/questions?page=1&limit=1"
+2025-04-04T14:42:26: GetQuestions called with params: page=1, limit=1, sort=created_at, order=desc, tag=, search=
+2025-04-04T14:42:26: Debug - Base SQL Query: SELECT q.id, q.title, q.content, q.created_at, q.updated_at, q.like_count, q.view_count FROM questions q ORDER BY q.created_at desc LIMIT ? OFFSET ?
+2025-04-04T14:42:26: Debug - Count SQL Query: SELECT COUNT(*) FROM questions q
+2025-04-04T14:42:26: Debug - Args: [1 0]
+2025-04-04T14:42:26: [GIN] 2025/04/04 - 14:42:26 | 200 |    2.578658ms |       127.0.0.1 | GET      "/api/v1/questions?page=1&limit=1"
+2025-04-04T14:42:33: [GIN] 2025/04/04 - 14:42:33 | 403 |       3.107µs |       127.0.0.1 | OPTIONS  "/api/v1/questions?page=1&limit=1"
+2025-04-04T14:42:33: [GIN] 2025/04/04 - 14:42:33 | 403 |       3.006µs |       127.0.0.1 | GET      "/api/v1/questions?page=1&limit=1"
+2025-04-04T14:42:56: GetQuestions called with params: page=1, limit=1, sort=created_at, order=desc, tag=, search=
+2025-04-04T14:42:56: Debug - Base SQL Query: SELECT q.id, q.title, q.content, q.created_at, q.updated_at, q.like_count, q.view_count FROM questions q ORDER BY q.created_at desc LIMIT ? OFFSET ?
+2025-04-04T14:42:56: Debug - Count SQL Query: SELECT COUNT(*) FROM questions q
+2025-04-04T14:42:56: Debug - Args: [1 0]
+2025-04-04T14:42:56: [GIN] 2025/04/04 - 14:42:56 | 200 |    2.496656ms |       127.0.0.1 | GET      "/api/v1/questions?page=1&limit=1"
+2025-04-04T14:43:03: [GIN] 2025/04/04 - 14:43:03 | 403 |       3.422µs |       127.0.0.1 | OPTIONS  "/api/v1/questions?page=1&limit=1"
+2025-04-04T14:43:03: [GIN] 2025/04/04 - 14:43:03 | 403 |       4.168µs |       127.0.0.1 | GET      "/api/v1/questions?page=1&limit=1"
+2025-04-04T14:43:05: [GIN] 2025/04/04 - 14:43:05 | 403 |       3.902µs |       127.0.0.1 | OPTIONS  "/api/v1/questions?page=1&limit=1"
+2025-04-04T14:43:05: [GIN] 2025/04/04 - 14:43:05 | 403 |       2.078µs |       127.0.0.1 | OPTIONS  "/api/v1/questions?page=1&limit=10&sort=created_at&order=desc"
+2025-04-04T14:43:05: [GIN] 2025/04/04 - 14:43:05 | 403 |       3.782µs |       127.0.0.1 | GET      "/api/v1/questions?page=1&limit=1"
+2025-04-04T14:43:05: [GIN] 2025/04/04 - 14:43:05 | 403 |      16.947µs |       127.0.0.1 | GET      "/api/v1/questions?page=1&limit=10&sort=created_at&order=desc"
+2025-04-04T14:43:06: [GIN] 2025/04/04 - 14:43:06 | 403 |       3.751µs |       127.0.0.1 | OPTIONS  "/api/v1/questions?page=1&limit=1"
+2025-04-04T14:43:06: [GIN] 2025/04/04 - 14:43:06 | 403 |      28.777µs |       127.0.0.1 | OPTIONS  "/api/v1/questions?page=1&limit=10&sort=created_at&order=desc"
+2025-04-04T14:43:06: [GIN] 2025/04/04 - 14:43:06 | 403 |       4.166µs |       127.0.0.1 | GET      "/api/v1/questions?page=1&limit=1"
+2025-04-04T14:43:06: [GIN] 2025/04/04 - 14:43:06 | 403 |       3.591µs |       127.0.0.1 | GET      "/api/v1/questions?page=1&limit=10&sort=created_at&order=desc"
+2025-04-04T14:43:17: [GIN] 2025/04/04 - 14:43:17 | 403 |       3.169µs |       127.0.0.1 | OPTIONS  "/api/v1/questions?page=1&limit=1"
+2025-04-04T14:43:17: [GIN] 2025/04/04 - 14:43:17 | 403 |        2.35µs |       127.0.0.1 | OPTIONS  "/api/v1/questions?page=1&limit=10&sort=created_at&order=desc"
+2025-04-04T14:43:17: [GIN] 2025/04/04 - 14:43:17 | 403 |       3.185µs |       127.0.0.1 | GET      "/api/v1/questions?page=1&limit=1"
+2025-04-04T14:43:17: [GIN] 2025/04/04 - 14:43:17 | 403 |       4.353µs |       127.0.0.1 | GET      "/api/v1/questions?page=1&limit=10&sort=created_at&order=desc"
+2025-04-04T14:43:44: [GIN] 2025/04/04 - 14:43:44 | 403 |       3.586µs |       127.0.0.1 | OPTIONS  "/api/v1/questions?page=1&limit=1"
+2025-04-04T14:43:44: [GIN] 2025/04/04 - 14:43:44 | 403 |       2.468µs |       127.0.0.1 | OPTIONS  "/api/v1/questions?page=1&limit=10&sort=created_at&order=desc"
+2025-04-04T14:43:44: [GIN] 2025/04/04 - 14:43:44 | 403 |       4.785µs |       127.0.0.1 | GET      "/api/v1/questions?page=1&limit=1"
+2025-04-04T14:43:44: [GIN] 2025/04/04 - 14:43:44 | 403 |       2.866µs |       127.0.0.1 | GET      "/api/v1/questions?page=1&limit=10&sort=created_at&order=desc"
+2025-04-04T14:44:14: [GIN] 2025/04/04 - 14:44:14 | 403 |       2.874µs |       127.0.0.1 | OPTIONS  "/api/v1/questions?page=1&limit=1"
+2025-04-04T14:44:14: [GIN] 2025/04/04 - 14:44:14 | 403 |       3.096µs |       127.0.0.1 | GET      "/api/v1/questions?page=1&limit=1"
+2025-04-04T14:44:44: [GIN] 2025/04/04 - 14:44:44 | 403 |       2.979µs |       127.0.0.1 | OPTIONS  "/api/v1/questions?page=1&limit=1"
+2025-04-04T14:44:44: [GIN] 2025/04/04 - 14:44:44 | 403 |       2.859µs |       127.0.0.1 | GET      "/api/v1/questions?page=1&limit=1"
+2025-04-04T14:45:01: [GIN-debug] [WARNING] Creating an Engine instance with the Logger and Recovery middleware already attached.
+2025-04-04T14:45:01: 
+2025-04-04T14:45:01: [GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+2025-04-04T14:45:01:  - using env:	export GIN_MODE=release
+2025-04-04T14:45:01:  - using code:	gin.SetMode(gin.ReleaseMode)
+2025-04-04T14:45:01: 
+2025-04-04T14:45:01: [GIN-debug] GET    /api/v1/questions         --> github.com/questions/backend/internal/api.GetQuestions (4 handlers)
+2025-04-04T14:45:01: [GIN-debug] GET    /api/v1/questions/:id     --> github.com/questions/backend/internal/api.GetQuestion (4 handlers)
+2025-04-04T14:45:01: [GIN-debug] POST   /api/v1/questions         --> github.com/questions/backend/internal/api.CreateQuestion (4 handlers)
+2025-04-04T14:45:01: [GIN-debug] POST   /api/v1/questions/:id/comments --> github.com/questions/backend/internal/api.AddComment (4 handlers)
+2025-04-04T14:45:01: [GIN-debug] POST   /api/v1/questions/:id/like --> github.com/questions/backend/internal/api.LikeQuestion (4 handlers)
+2025-04-04T14:45:01: [GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+2025-04-04T14:45:01: Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
+2025-04-04T14:45:01: [GIN-debug] Listening and serving HTTP on :8081
+2025-04-04T14:45:15: [GIN] 2025/04/04 - 14:45:15 | 403 |      58.046µs |       127.0.0.1 | OPTIONS  "/api/v1/questions?page=1&limit=1"
+2025-04-04T14:45:15: [GIN] 2025/04/04 - 14:45:15 | 403 |       5.321µs |       127.0.0.1 | GET      "/api/v1/questions?page=1&limit=1"
+2025-04-04T14:45:59: [GIN] 2025/04/04 - 14:45:59 | 403 |       44.16µs |       127.0.0.1 | GET      "/api/v1/questions?page=1&limit=10&sort=created_at&order=desc"
+2025-04-04T14:45:59: [GIN] 2025/04/04 - 14:45:59 | 403 |      20.957µs |       127.0.0.1 | GET      "/api/v1/questions?page=1&limit=1"
+2025-04-04T14:46:17: [GIN] 2025/04/04 - 14:46:17 | 403 |       4.002µs |       127.0.0.1 | GET      "/api/v1/questions?page=1&limit=1"
+2025-04-04T14:46:17: [GIN] 2025/04/04 - 14:46:17 | 403 |       2.798µs |       127.0.0.1 | GET      "/api/v1/questions?page=1&limit=10&sort=created_at&order=desc"
+2025-04-04T14:46:47: [GIN] 2025/04/04 - 14:46:47 | 403 |       7.988µs |       127.0.0.1 | GET      "/api/v1/questions?page=1&limit=1"
+2025-04-04T14:47:17: [GIN] 2025/04/04 - 14:47:17 | 403 |       3.062µs |       127.0.0.1 | GET      "/api/v1/questions?page=1&limit=1"
+2025-04-04T14:47:27: [GIN-debug] [WARNING] Creating an Engine instance with the Logger and Recovery middleware already attached.
+2025-04-04T14:47:27: 
+2025-04-04T14:47:27: [GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+2025-04-04T14:47:27:  - using env:	export GIN_MODE=release
+2025-04-04T14:47:27:  - using code:	gin.SetMode(gin.ReleaseMode)
+2025-04-04T14:47:27: 
+2025-04-04T14:47:27: [GIN-debug] GET    /api/v1/questions         --> github.com/questions/backend/internal/api.GetQuestions (4 handlers)
+2025-04-04T14:47:27: [GIN-debug] GET    /api/v1/questions/:id     --> github.com/questions/backend/internal/api.GetQuestion (4 handlers)
+2025-04-04T14:47:27: [GIN-debug] POST   /api/v1/questions         --> github.com/questions/backend/internal/api.CreateQuestion (4 handlers)
+2025-04-04T14:47:27: [GIN-debug] POST   /api/v1/questions/:id/comments --> github.com/questions/backend/internal/api.AddComment (4 handlers)
+2025-04-04T14:47:27: [GIN-debug] POST   /api/v1/questions/:id/like --> github.com/questions/backend/internal/api.LikeQuestion (4 handlers)
+2025-04-04T14:47:27: [GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+2025-04-04T14:47:27: Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
+2025-04-04T14:47:27: [GIN-debug] Listening and serving HTTP on :8081
+2025-04-04T14:47:36: [GIN] 2025/04/04 - 14:47:36 | 403 |      37.605µs |       127.0.0.1 | GET      "/api/v1/questions?page=1&limit=1"
+2025-04-04T14:47:36: [GIN] 2025/04/04 - 14:47:36 | 403 |      19.132µs |       127.0.0.1 | GET      "/api/v1/questions?page=1&limit=10&sort=created_at&order=desc"
+2025-04-04T14:48:06: [GIN] 2025/04/04 - 14:48:06 | 403 |       5.072µs |       127.0.0.1 | GET      "/api/v1/questions?page=1&limit=1"
+2025-04-04T14:48:36: [GIN] 2025/04/04 - 14:48:36 | 403 |       5.922µs |       127.0.0.1 | GET      "/api/v1/questions?page=1&limit=1"
+2025-04-04T14:49:01: [GIN-debug] [WARNING] Creating an Engine instance with the Logger and Recovery middleware already attached.
+2025-04-04T14:49:01: 
+2025-04-04T14:49:01: [GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+2025-04-04T14:49:01:  - using env:	export GIN_MODE=release
+2025-04-04T14:49:01:  - using code:	gin.SetMode(gin.ReleaseMode)
+2025-04-04T14:49:01: 
+2025-04-04T14:49:01: [GIN-debug] GET    /api/v1/questions         --> github.com/questions/backend/internal/api.GetQuestions (4 handlers)
+2025-04-04T14:49:01: [GIN-debug] GET    /api/v1/questions/:id     --> github.com/questions/backend/internal/api.GetQuestion (4 handlers)
+2025-04-04T14:49:01: [GIN-debug] POST   /api/v1/questions         --> github.com/questions/backend/internal/api.CreateQuestion (4 handlers)
+2025-04-04T14:49:01: [GIN-debug] POST   /api/v1/questions/:id/comments --> github.com/questions/backend/internal/api.AddComment (4 handlers)
+2025-04-04T14:49:01: [GIN-debug] POST   /api/v1/questions/:id/like --> github.com/questions/backend/internal/api.LikeQuestion (4 handlers)
+2025-04-04T14:49:01: [GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+2025-04-04T14:49:01: Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
+2025-04-04T14:49:01: [GIN-debug] Listening and serving HTTP on :8081
+2025-04-04T14:49:06: GetQuestions called with params: page=1, limit=1, sort=created_at, order=desc, tag=, search=
+2025-04-04T14:49:06: Debug - Base SQL Query: SELECT q.id, q.title, q.content, q.created_at, q.updated_at, q.like_count, q.view_count FROM questions q ORDER BY q.created_at desc LIMIT ? OFFSET ?
+2025-04-04T14:49:06: Debug - Count SQL Query: SELECT COUNT(*) FROM questions q
+2025-04-04T14:49:06: Debug - Args: [1 0]
+2025-04-04T14:49:06: [GIN] 2025/04/04 - 14:49:06 | 200 |    3.338973ms |       127.0.0.1 | GET      "/api/v1/questions?page=1&limit=1"
+2025-04-04T14:49:36: GetQuestions called with params: page=1, limit=1, sort=created_at, order=desc, tag=, search=
+2025-04-04T14:49:36: Debug - Base SQL Query: SELECT q.id, q.title, q.content, q.created_at, q.updated_at, q.like_count, q.view_count FROM questions q ORDER BY q.created_at desc LIMIT ? OFFSET ?
+2025-04-04T14:49:36: Debug - Count SQL Query: SELECT COUNT(*) FROM questions q
+2025-04-04T14:49:36: Debug - Args: [1 0]
+2025-04-04T14:49:36: [GIN] 2025/04/04 - 14:49:36 | 200 |    2.951088ms |       127.0.0.1 | GET      "/api/v1/questions?page=1&limit=1"
+2025-04-04T14:50:06: GetQuestions called with params: page=1, limit=1, sort=created_at, order=desc, tag=, search=
+2025-04-04T14:50:06: Debug - Base SQL Query: SELECT q.id, q.title, q.content, q.created_at, q.updated_at, q.like_count, q.view_count FROM questions q ORDER BY q.created_at desc LIMIT ? OFFSET ?
+2025-04-04T14:50:06: Debug - Count SQL Query: SELECT COUNT(*) FROM questions q
+2025-04-04T14:50:06: Debug - Args: [1 0]
+2025-04-04T14:50:06: [GIN] 2025/04/04 - 14:50:06 | 200 |    2.986984ms |       127.0.0.1 | GET      "/api/v1/questions?page=1&limit=1"
+2025-04-04T14:50:13: GetQuestions called with params: page=1, limit=1, sort=created_at, order=desc, tag=, search=
+2025-04-04T14:50:13: Debug - Base SQL Query: SELECT q.id, q.title, q.content, q.created_at, q.updated_at, q.like_count, q.view_count FROM questions q ORDER BY q.created_at desc LIMIT ? OFFSET ?
+2025-04-04T14:50:13: Debug - Count SQL Query: SELECT COUNT(*) FROM questions q
+2025-04-04T14:50:13: Debug - Args: [1 0]
+2025-04-04T14:50:13: [GIN] 2025/04/04 - 14:50:13 | 200 |    2.498124ms |       127.0.0.1 | GET      "/api/v1/questions?page=1&limit=1"
+2025-04-04T14:50:13: GetQuestions called with params: page=1, limit=10, sort=created_at, order=desc, tag=, search=
+2025-04-04T14:50:13: Debug - Base SQL Query: SELECT q.id, q.title, q.content, q.created_at, q.updated_at, q.like_count, q.view_count FROM questions q ORDER BY q.created_at desc LIMIT ? OFFSET ?
+2025-04-04T14:50:13: Debug - Count SQL Query: SELECT COUNT(*) FROM questions q
+2025-04-04T14:50:13: Debug - Args: [10 0]
+2025-04-04T14:50:13: [GIN] 2025/04/04 - 14:50:13 | 200 |   20.224223ms |       127.0.0.1 | GET      "/api/v1/questions?page=1&limit=10&sort=created_at&order=desc"
+2025-04-04T14:50:15: [GIN] 2025/04/04 - 14:50:15 | 200 |    2.916021ms |       127.0.0.1 | GET      "/api/v1/questions/12"
+2025-04-04T14:50:17: GetQuestions called with params: page=1, limit=1, sort=created_at, order=desc, tag=, search=
+2025-04-04T14:50:17: Debug - Base SQL Query: SELECT q.id, q.title, q.content, q.created_at, q.updated_at, q.like_count, q.view_count FROM questions q ORDER BY q.created_at desc LIMIT ? OFFSET ?
+2025-04-04T14:50:17: Debug - Count SQL Query: SELECT COUNT(*) FROM questions q
+2025-04-04T14:50:17: Debug - Args: [1 0]
+2025-04-04T14:50:17: GetQuestions called with params: page=1, limit=10, sort=created_at, order=desc, tag=, search=
+2025-04-04T14:50:17: Debug - Base SQL Query: SELECT q.id, q.title, q.content, q.created_at, q.updated_at, q.like_count, q.view_count FROM questions q ORDER BY q.created_at desc LIMIT ? OFFSET ?
+2025-04-04T14:50:17: Debug - Count SQL Query: SELECT COUNT(*) FROM questions q
+2025-04-04T14:50:17: Debug - Args: [10 0]
+2025-04-04T14:50:17: [GIN] 2025/04/04 - 14:50:17 | 200 |    4.178014ms |       127.0.0.1 | GET      "/api/v1/questions?page=1&limit=1"
+2025-04-04T14:50:17: [GIN] 2025/04/04 - 14:50:17 | 200 |     8.81819ms |       127.0.0.1 | GET      "/api/v1/questions?page=1&limit=10&sort=created_at&order=desc"
+2025-04-04T14:54:48: GetQuestions called with params: page=1, limit=10, sort=created_at, order=desc, tag=, search=
+2025-04-04T14:54:48: Debug - Base SQL Query: SELECT q.id, q.title, q.content, q.created_at, q.updated_at, q.like_count, q.view_count FROM questions q ORDER BY q.created_at desc LIMIT ? OFFSET ?
+2025-04-04T14:54:48: Debug - Count SQL Query: SELECT COUNT(*) FROM questions q
+2025-04-04T14:54:48: Debug - Args: [10 0]
+2025-04-04T14:54:48: [GIN] 2025/04/04 - 14:54:48 | 200 |     9.45154ms |       127.0.0.1 | GET      "/api/v1/questions?page=1&limit=10&sort=created_at&order=desc"
+2025-04-04T14:54:48: GetQuestions called with params: page=1, limit=1, sort=created_at, order=desc, tag=, search=
+2025-04-04T14:54:48: Debug - Base SQL Query: SELECT q.id, q.title, q.content, q.created_at, q.updated_at, q.like_count, q.view_count FROM questions q ORDER BY q.created_at desc LIMIT ? OFFSET ?
+2025-04-04T14:54:48: Debug - Count SQL Query: SELECT COUNT(*) FROM questions q
+2025-04-04T14:54:48: Debug - Args: [1 0]
+2025-04-04T14:54:48: [GIN] 2025/04/04 - 14:54:48 | 200 |     2.74086ms |       127.0.0.1 | GET      "/api/v1/questions?page=1&limit=1"
+2025-04-04T14:54:49: [GIN] 2025/04/04 - 14:54:49 | 200 |    3.202511ms |       127.0.0.1 | GET      "/api/v1/questions/12"
+2025-04-04T14:54:53: GetQuestions called with params: page=1, limit=1, sort=created_at, order=desc, tag=, search=
+2025-04-04T14:54:53: Debug - Base SQL Query: SELECT q.id, q.title, q.content, q.created_at, q.updated_at, q.like_count, q.view_count FROM questions q ORDER BY q.created_at desc LIMIT ? OFFSET ?
+2025-04-04T14:54:53: Debug - Count SQL Query: SELECT COUNT(*) FROM questions q
+2025-04-04T14:54:53: Debug - Args: [1 0]
+2025-04-04T14:54:53: GetQuestions called with params: page=1, limit=10, sort=created_at, order=desc, tag=, search=
+2025-04-04T14:54:53: Debug - Base SQL Query: SELECT q.id, q.title, q.content, q.created_at, q.updated_at, q.like_count, q.view_count FROM questions q ORDER BY q.created_at desc LIMIT ? OFFSET ?
+2025-04-04T14:54:53: Debug - Count SQL Query: SELECT COUNT(*) FROM questions q
+2025-04-04T14:54:53: Debug - Args: [10 0]
+2025-04-04T14:54:53: [GIN] 2025/04/04 - 14:54:53 | 200 |    3.829442ms |       127.0.0.1 | GET      "/api/v1/questions?page=1&limit=1"
+2025-04-04T14:54:53: [GIN] 2025/04/04 - 14:54:53 | 200 |   10.815654ms |       127.0.0.1 | GET      "/api/v1/questions?page=1&limit=10&sort=created_at&order=desc"
+2025-04-04T14:54:56: GetQuestions called with params: page=1, limit=1, sort=created_at, order=desc, tag=, search=
+2025-04-04T14:54:56: Debug - Base SQL Query: SELECT q.id, q.title, q.content, q.created_at, q.updated_at, q.like_count, q.view_count FROM questions q ORDER BY q.created_at desc LIMIT ? OFFSET ?
+2025-04-04T14:54:56: Debug - Count SQL Query: SELECT COUNT(*) FROM questions q
+2025-04-04T14:54:56: Debug - Args: [1 0]
+2025-04-04T14:54:56: GetQuestions called with params: page=1, limit=10, sort=created_at, order=desc, tag=, search=
+2025-04-04T14:54:56: Debug - Base SQL Query: SELECT q.id, q.title, q.content, q.created_at, q.updated_at, q.like_count, q.view_count FROM questions q ORDER BY q.created_at desc LIMIT ? OFFSET ?
+2025-04-04T14:54:56: Debug - Count SQL Query: SELECT COUNT(*) FROM questions q
+2025-04-04T14:54:56: Debug - Args: [10 0]
+2025-04-04T14:54:56: [GIN] 2025/04/04 - 14:54:56 | 200 |    3.624017ms |       127.0.0.1 | GET      "/api/v1/questions?page=1&limit=1"
+2025-04-04T14:54:56: [GIN] 2025/04/04 - 14:54:56 | 200 |   10.649152ms |       127.0.0.1 | GET      "/api/v1/questions?page=1&limit=10&sort=created_at&order=desc"
+2025-04-04T14:54:57: [GIN] 2025/04/04 - 14:54:57 | 200 |    2.606417ms |       127.0.0.1 | GET      "/api/v1/questions/12"
+2025-04-04T14:55:01: [GIN] 2025/04/04 - 14:55:01 | 204 |       9.399µs |       127.0.0.1 | OPTIONS  "/api/v1/questions/12/comments"
+2025-04-04T14:55:01: [GIN] 2025/04/04 - 14:55:01 | 201 |    3.412041ms |       127.0.0.1 | POST     "/api/v1/questions/12/comments"
+2025-04-04T14:55:01: [GIN] 2025/04/04 - 14:55:01 | 200 |    3.466415ms |       127.0.0.1 | GET      "/api/v1/questions/12"
+2025-04-04T14:55:04: GetQuestions called with params: page=1, limit=1, sort=created_at, order=desc, tag=, search=
+2025-04-04T14:55:04: Debug - Base SQL Query: SELECT q.id, q.title, q.content, q.created_at, q.updated_at, q.like_count, q.view_count FROM questions q ORDER BY q.created_at desc LIMIT ? OFFSET ?
+2025-04-04T14:55:04: Debug - Count SQL Query: SELECT COUNT(*) FROM questions q
+2025-04-04T14:55:04: Debug - Args: [1 0]
+2025-04-04T14:55:04: GetQuestions called with params: page=1, limit=10, sort=created_at, order=desc, tag=, search=
+2025-04-04T14:55:04: Debug - Base SQL Query: SELECT q.id, q.title, q.content, q.created_at, q.updated_at, q.like_count, q.view_count FROM questions q ORDER BY q.created_at desc LIMIT ? OFFSET ?
+2025-04-04T14:55:04: Debug - Count SQL Query: SELECT COUNT(*) FROM questions q
+2025-04-04T14:55:04: Debug - Args: [10 0]
+2025-04-04T14:55:05: [GIN] 2025/04/04 - 14:55:05 | 200 |    3.306416ms |       127.0.0.1 | GET      "/api/v1/questions?page=1&limit=1"
+2025-04-04T14:55:05: [GIN] 2025/04/04 - 14:55:05 | 200 |    8.756021ms |       127.0.0.1 | GET      "/api/v1/questions?page=1&limit=10&sort=created_at&order=desc"
+2025-04-04T14:55:07: [GIN] 2025/04/04 - 14:55:07 | 200 |    2.460294ms |       127.0.0.1 | GET      "/api/v1/questions/12"
+2025-04-04T14:55:08: GetQuestions called with params: page=1, limit=1, sort=created_at, order=desc, tag=, search=
+2025-04-04T14:55:08: Debug - Base SQL Query: SELECT q.id, q.title, q.content, q.created_at, q.updated_at, q.like_count, q.view_count FROM questions q ORDER BY q.created_at desc LIMIT ? OFFSET ?
+2025-04-04T14:55:08: Debug - Count SQL Query: SELECT COUNT(*) FROM questions q
+2025-04-04T14:55:08: Debug - Args: [1 0]
+2025-04-04T14:55:08: GetQuestions called with params: page=1, limit=10, sort=created_at, order=desc, tag=, search=
+2025-04-04T14:55:08: Debug - Base SQL Query: SELECT q.id, q.title, q.content, q.created_at, q.updated_at, q.like_count, q.view_count FROM questions q ORDER BY q.created_at desc LIMIT ? OFFSET ?
+2025-04-04T14:55:08: Debug - Count SQL Query: SELECT COUNT(*) FROM questions q
+2025-04-04T14:55:08: Debug - Args: [10 0]
+2025-04-04T14:55:08: [GIN] 2025/04/04 - 14:55:08 | 200 |    4.302979ms |       127.0.0.1 | GET      "/api/v1/questions?page=1&limit=1"
+2025-04-04T14:55:08: [GIN] 2025/04/04 - 14:55:08 | 200 |    8.826921ms |       127.0.0.1 | GET      "/api/v1/questions?page=1&limit=10&sort=created_at&order=desc"
+2025-04-04T14:55:08: [GIN] 2025/04/04 - 14:55:08 | 200 |     2.89658ms |       127.0.0.1 | GET      "/api/v1/questions/11"
+2025-04-04T14:55:10: GetQuestions called with params: page=1, limit=1, sort=created_at, order=desc, tag=, search=
+2025-04-04T14:55:10: Debug - Base SQL Query: SELECT q.id, q.title, q.content, q.created_at, q.updated_at, q.like_count, q.view_count FROM questions q ORDER BY q.created_at desc LIMIT ? OFFSET ?
+2025-04-04T14:55:10: Debug - Count SQL Query: SELECT COUNT(*) FROM questions q
+2025-04-04T14:55:10: Debug - Args: [1 0]
+2025-04-04T14:55:10: GetQuestions called with params: page=1, limit=10, sort=created_at, order=desc, tag=, search=
+2025-04-04T14:55:10: Debug - Base SQL Query: SELECT q.id, q.title, q.content, q.created_at, q.updated_at, q.like_count, q.view_count FROM questions q ORDER BY q.created_at desc LIMIT ? OFFSET ?
+2025-04-04T14:55:10: Debug - Count SQL Query: SELECT COUNT(*) FROM questions q
+2025-04-04T14:55:10: Debug - Args: [10 0]
+2025-04-04T14:55:10: [GIN] 2025/04/04 - 14:55:10 | 200 |    4.402548ms |       127.0.0.1 | GET      "/api/v1/questions?page=1&limit=1"
+2025-04-04T14:55:10: [GIN] 2025/04/04 - 14:55:10 | 200 |    9.500338ms |       127.0.0.1 | GET      "/api/v1/questions?page=1&limit=10&sort=created_at&order=desc"
+2025-04-04T14:55:11: [GIN] 2025/04/04 - 14:55:11 | 200 |    2.513344ms |       127.0.0.1 | GET      "/api/v1/questions/11"
+2025-04-04T14:55:12: LikeQuestion called for question ID: 11
+2025-04-04T14:55:12: Client IP: 127.0.0.1
+2025-04-04T14:55:12: Successfully removed like for question ID: 11 from IP: 127.0.0.1
+2025-04-04T14:55:12: [GIN] 2025/04/04 - 14:55:12 | 200 |    7.233899ms |       127.0.0.1 | POST     "/api/v1/questions/11/like"
+2025-04-04T14:55:13: GetQuestions called with params: page=1, limit=1, sort=created_at, order=desc, tag=, search=
+2025-04-04T14:55:13: Debug - Base SQL Query: SELECT q.id, q.title, q.content, q.created_at, q.updated_at, q.like_count, q.view_count FROM questions q ORDER BY q.created_at desc LIMIT ? OFFSET ?
+2025-04-04T14:55:13: Debug - Count SQL Query: SELECT COUNT(*) FROM questions q
+2025-04-04T14:55:13: Debug - Args: [1 0]
+2025-04-04T14:55:13: GetQuestions called with params: page=1, limit=10, sort=created_at, order=desc, tag=, search=
+2025-04-04T14:55:13: Debug - Base SQL Query: SELECT q.id, q.title, q.content, q.created_at, q.updated_at, q.like_count, q.view_count FROM questions q ORDER BY q.created_at desc LIMIT ? OFFSET ?
+2025-04-04T14:55:13: Debug - Count SQL Query: SELECT COUNT(*) FROM questions q
+2025-04-04T14:55:13: Debug - Args: [10 0]
+2025-04-04T14:55:13: [GIN] 2025/04/04 - 14:55:13 | 200 |    4.888207ms |       127.0.0.1 | GET      "/api/v1/questions?page=1&limit=1"
+2025-04-04T14:55:13: [GIN] 2025/04/04 - 14:55:13 | 200 |   12.442596ms |       127.0.0.1 | GET      "/api/v1/questions?page=1&limit=10&sort=created_at&order=desc"
+2025-04-04T14:55:16: GetQuestions called with params: page=1, limit=1, sort=created_at, order=desc, tag=, search=
+2025-04-04T14:55:16: Debug - Base SQL Query: SELECT q.id, q.title, q.content, q.created_at, q.updated_at, q.like_count, q.view_count FROM questions q ORDER BY q.created_at desc LIMIT ? OFFSET ?
+2025-04-04T14:55:16: Debug - Count SQL Query: SELECT COUNT(*) FROM questions q
+2025-04-04T14:55:16: Debug - Args: [1 0]
+2025-04-04T14:55:16: GetQuestions called with params: page=1, limit=10, sort=created_at, order=desc, tag=, search=
+2025-04-04T14:55:16: Debug - Base SQL Query: SELECT q.id, q.title, q.content, q.created_at, q.updated_at, q.like_count, q.view_count FROM questions q ORDER BY q.created_at desc LIMIT ? OFFSET ?
+2025-04-04T14:55:16: Debug - Count SQL Query: SELECT COUNT(*) FROM questions q
+2025-04-04T14:55:16: Debug - Args: [10 0]
+2025-04-04T14:55:16: [GIN] 2025/04/04 - 14:55:16 | 200 |    3.485816ms |       127.0.0.1 | GET      "/api/v1/questions?page=1&limit=1"
+2025-04-04T14:55:16: [GIN] 2025/04/04 - 14:55:16 | 200 |    8.550521ms |       127.0.0.1 | GET      "/api/v1/questions?page=1&limit=10&sort=created_at&order=desc"
+2025-04-04T14:55:46: GetQuestions called with params: page=1, limit=1, sort=created_at, order=desc, tag=, search=
+2025-04-04T14:55:46: Debug - Base SQL Query: SELECT q.id, q.title, q.content, q.created_at, q.updated_at, q.like_count, q.view_count FROM questions q ORDER BY q.created_at desc LIMIT ? OFFSET ?
+2025-04-04T14:55:46: Debug - Count SQL Query: SELECT COUNT(*) FROM questions q
+2025-04-04T14:55:46: Debug - Args: [1 0]
+2025-04-04T14:55:46: [GIN] 2025/04/04 - 14:55:46 | 200 |    3.274818ms |       127.0.0.1 | GET      "/api/v1/questions?page=1&limit=1"
+2025-04-04T14:56:16: GetQuestions called with params: page=1, limit=1, sort=created_at, order=desc, tag=, search=
+2025-04-04T14:56:16: Debug - Base SQL Query: SELECT q.id, q.title, q.content, q.created_at, q.updated_at, q.like_count, q.view_count FROM questions q ORDER BY q.created_at desc LIMIT ? OFFSET ?
+2025-04-04T14:56:16: Debug - Count SQL Query: SELECT COUNT(*) FROM questions q
+2025-04-04T14:56:16: Debug - Args: [1 0]
+2025-04-04T14:56:16: [GIN] 2025/04/04 - 14:56:16 | 200 |    2.455056ms |       127.0.0.1 | GET      "/api/v1/questions?page=1&limit=1"
+2025-04-04T14:56:46: GetQuestions called with params: page=1, limit=1, sort=created_at, order=desc, tag=, search=
+2025-04-04T14:56:46: Debug - Base SQL Query: SELECT q.id, q.title, q.content, q.created_at, q.updated_at, q.like_count, q.view_count FROM questions q ORDER BY q.created_at desc LIMIT ? OFFSET ?
+2025-04-04T14:56:46: Debug - Count SQL Query: SELECT COUNT(*) FROM questions q
+2025-04-04T14:56:46: Debug - Args: [1 0]
+2025-04-04T14:56:46: [GIN] 2025/04/04 - 14:56:46 | 200 |    3.657967ms |       127.0.0.1 | GET      "/api/v1/questions?page=1&limit=1"
+2025-04-04T14:57:16: GetQuestions called with params: page=1, limit=1, sort=created_at, order=desc, tag=, search=
+2025-04-04T14:57:16: Debug - Base SQL Query: SELECT q.id, q.title, q.content, q.created_at, q.updated_at, q.like_count, q.view_count FROM questions q ORDER BY q.created_at desc LIMIT ? OFFSET ?
+2025-04-04T14:57:16: Debug - Count SQL Query: SELECT COUNT(*) FROM questions q
+2025-04-04T14:57:16: Debug - Args: [1 0]
+2025-04-04T14:57:16: [GIN] 2025/04/04 - 14:57:16 | 200 |    4.349088ms |       127.0.0.1 | GET      "/api/v1/questions?page=1&limit=1"
+2025-04-04T14:57:46: GetQuestions called with params: page=1, limit=1, sort=created_at, order=desc, tag=, search=
+2025-04-04T14:57:46: Debug - Base SQL Query: SELECT q.id, q.title, q.content, q.created_at, q.updated_at, q.like_count, q.view_count FROM questions q ORDER BY q.created_at desc LIMIT ? OFFSET ?
+2025-04-04T14:57:46: Debug - Count SQL Query: SELECT COUNT(*) FROM questions q
+2025-04-04T14:57:46: Debug - Args: [1 0]
+2025-04-04T14:57:46: [GIN] 2025/04/04 - 14:57:46 | 200 |    4.185267ms |       127.0.0.1 | GET      "/api/v1/questions?page=1&limit=1"
+2025-04-04T14:58:16: GetQuestions called with params: page=1, limit=1, sort=created_at, order=desc, tag=, search=
+2025-04-04T14:58:16: Debug - Base SQL Query: SELECT q.id, q.title, q.content, q.created_at, q.updated_at, q.like_count, q.view_count FROM questions q ORDER BY q.created_at desc LIMIT ? OFFSET ?
+2025-04-04T14:58:16: Debug - Count SQL Query: SELECT COUNT(*) FROM questions q
+2025-04-04T14:58:16: Debug - Args: [1 0]
+2025-04-04T14:58:16: [GIN] 2025/04/04 - 14:58:16 | 200 |    2.566193ms |       127.0.0.1 | GET      "/api/v1/questions?page=1&limit=1"
+2025-04-04T14:58:17: GetQuestions called with params: page=1, limit=1, sort=created_at, order=desc, tag=, search=
+2025-04-04T14:58:17: Debug - Base SQL Query: SELECT q.id, q.title, q.content, q.created_at, q.updated_at, q.like_count, q.view_count FROM questions q ORDER BY q.created_at desc LIMIT ? OFFSET ?
+2025-04-04T14:58:17: Debug - Count SQL Query: SELECT COUNT(*) FROM questions q
+2025-04-04T14:58:17: Debug - Args: [1 0]
+2025-04-04T14:58:17: GetQuestions called with params: page=1, limit=10, sort=created_at, order=desc, tag=, search=
+2025-04-04T14:58:17: Debug - Base SQL Query: SELECT q.id, q.title, q.content, q.created_at, q.updated_at, q.like_count, q.view_count FROM questions q ORDER BY q.created_at desc LIMIT ? OFFSET ?
+2025-04-04T14:58:17: Debug - Count SQL Query: SELECT COUNT(*) FROM questions q
+2025-04-04T14:58:17: Debug - Args: [10 0]
+2025-04-04T14:58:17: [GIN] 2025/04/04 - 14:58:17 | 200 |    4.087829ms |       127.0.0.1 | GET      "/api/v1/questions?page=1&limit=1"
+2025-04-04T14:58:17: [GIN] 2025/04/04 - 14:58:17 | 200 |    9.780478ms |       127.0.0.1 | GET      "/api/v1/questions?page=1&limit=10&sort=created_at&order=desc"
+2025-04-04T14:58:47: GetQuestions called with params: page=1, limit=1, sort=created_at, order=desc, tag=, search=
+2025-04-04T14:58:47: Debug - Base SQL Query: SELECT q.id, q.title, q.content, q.created_at, q.updated_at, q.like_count, q.view_count FROM questions q ORDER BY q.created_at desc LIMIT ? OFFSET ?
+2025-04-04T14:58:47: Debug - Count SQL Query: SELECT COUNT(*) FROM questions q
+2025-04-04T14:58:47: Debug - Args: [1 0]
+2025-04-04T14:58:47: [GIN] 2025/04/04 - 14:58:47 | 200 |    3.248755ms |       127.0.0.1 | GET      "/api/v1/questions?page=1&limit=1"
+2025-04-04T14:59:17: GetQuestions called with params: page=1, limit=1, sort=created_at, order=desc, tag=, search=
+2025-04-04T14:59:17: Debug - Base SQL Query: SELECT q.id, q.title, q.content, q.created_at, q.updated_at, q.like_count, q.view_count FROM questions q ORDER BY q.created_at desc LIMIT ? OFFSET ?
+2025-04-04T14:59:17: Debug - Count SQL Query: SELECT COUNT(*) FROM questions q
+2025-04-04T14:59:17: Debug - Args: [1 0]
+2025-04-04T14:59:17: [GIN] 2025/04/04 - 14:59:17 | 200 |     3.43224ms |       127.0.0.1 | GET      "/api/v1/questions?page=1&limit=1"
+2025-04-04T14:59:47: GetQuestions called with params: page=1, limit=1, sort=created_at, order=desc, tag=, search=
+2025-04-04T14:59:47: Debug - Base SQL Query: SELECT q.id, q.title, q.content, q.created_at, q.updated_at, q.like_count, q.view_count FROM questions q ORDER BY q.created_at desc LIMIT ? OFFSET ?
+2025-04-04T14:59:47: Debug - Count SQL Query: SELECT COUNT(*) FROM questions q
+2025-04-04T14:59:47: Debug - Args: [1 0]
+2025-04-04T14:59:47: [GIN] 2025/04/04 - 14:59:47 | 200 |    4.147188ms |       127.0.0.1 | GET      "/api/v1/questions?page=1&limit=1"
+2025-04-04T15:00:17: GetQuestions called with params: page=1, limit=1, sort=created_at, order=desc, tag=, search=
+2025-04-04T15:00:17: Debug - Base SQL Query: SELECT q.id, q.title, q.content, q.created_at, q.updated_at, q.like_count, q.view_count FROM questions q ORDER BY q.created_at desc LIMIT ? OFFSET ?
+2025-04-04T15:00:17: Debug - Count SQL Query: SELECT COUNT(*) FROM questions q
+2025-04-04T15:00:17: Debug - Args: [1 0]
+2025-04-04T15:00:17: [GIN] 2025/04/04 - 15:00:17 | 200 |    2.934082ms |       127.0.0.1 | GET      "/api/v1/questions?page=1&limit=1"
+2025-04-04T15:01:09: GetQuestions called with params: page=1, limit=1, sort=created_at, order=desc, tag=, search=
+2025-04-04T15:01:09: Debug - Base SQL Query: SELECT q.id, q.title, q.content, q.created_at, q.updated_at, q.like_count, q.view_count FROM questions q ORDER BY q.created_at desc LIMIT ? OFFSET ?
+2025-04-04T15:01:09: Debug - Count SQL Query: SELECT COUNT(*) FROM questions q
+2025-04-04T15:01:09: Debug - Args: [1 0]
+2025-04-04T15:01:09: [GIN] 2025/04/04 - 15:01:09 | 200 |       2.765ms |       127.0.0.1 | GET      "/api/v1/questions?page=1&limit=1"
+2025-04-04T15:01:55: GetQuestions called with params: page=1, limit=1, sort=created_at, order=desc, tag=, search=
+2025-04-04T15:01:55: Debug - Base SQL Query: SELECT q.id, q.title, q.content, q.created_at, q.updated_at, q.like_count, q.view_count FROM questions q ORDER BY q.created_at desc LIMIT ? OFFSET ?
+2025-04-04T15:01:55: Debug - Count SQL Query: SELECT COUNT(*) FROM questions q
+2025-04-04T15:01:55: Debug - Args: [1 0]
+2025-04-04T15:01:55: [GIN] 2025/04/04 - 15:01:55 | 200 |    4.208671ms |       127.0.0.1 | GET      "/api/v1/questions?page=1&limit=1"
+2025-04-04T15:02:17: GetQuestions called with params: page=1, limit=1, sort=created_at, order=desc, tag=, search=
+2025-04-04T15:02:17: Debug - Base SQL Query: SELECT q.id, q.title, q.content, q.created_at, q.updated_at, q.like_count, q.view_count FROM questions q ORDER BY q.created_at desc LIMIT ? OFFSET ?
+2025-04-04T15:02:17: Debug - Count SQL Query: SELECT COUNT(*) FROM questions q
+2025-04-04T15:02:17: Debug - Args: [1 0]
+2025-04-04T15:02:17: [GIN] 2025/04/04 - 15:02:17 | 200 |    2.599764ms |       127.0.0.1 | GET      "/api/v1/questions?page=1&limit=1"
+2025-04-04T15:02:47: GetQuestions called with params: page=1, limit=1, sort=created_at, order=desc, tag=, search=
+2025-04-04T15:02:47: Debug - Base SQL Query: SELECT q.id, q.title, q.content, q.created_at, q.updated_at, q.like_count, q.view_count FROM questions q ORDER BY q.created_at desc LIMIT ? OFFSET ?
+2025-04-04T15:02:47: Debug - Count SQL Query: SELECT COUNT(*) FROM questions q
+2025-04-04T15:02:47: Debug - Args: [1 0]
+2025-04-04T15:02:47: [GIN] 2025/04/04 - 15:02:47 | 200 |    2.710345ms |       127.0.0.1 | GET      "/api/v1/questions?page=1&limit=1"
+2025-04-04T15:03:17: GetQuestions called with params: page=1, limit=1, sort=created_at, order=desc, tag=, search=
+2025-04-04T15:03:17: Debug - Base SQL Query: SELECT q.id, q.title, q.content, q.created_at, q.updated_at, q.like_count, q.view_count FROM questions q ORDER BY q.created_at desc LIMIT ? OFFSET ?
+2025-04-04T15:03:17: Debug - Count SQL Query: SELECT COUNT(*) FROM questions q
+2025-04-04T15:03:17: Debug - Args: [1 0]
+2025-04-04T15:03:17: [GIN] 2025/04/04 - 15:03:17 | 200 |    2.565998ms |       127.0.0.1 | GET      "/api/v1/questions?page=1&limit=1"
+2025-04-04T15:04:09: GetQuestions called with params: page=1, limit=1, sort=created_at, order=desc, tag=, search=
+2025-04-04T15:04:09: Debug - Base SQL Query: SELECT q.id, q.title, q.content, q.created_at, q.updated_at, q.like_count, q.view_count FROM questions q ORDER BY q.created_at desc LIMIT ? OFFSET ?
+2025-04-04T15:04:09: Debug - Count SQL Query: SELECT COUNT(*) FROM questions q
+2025-04-04T15:04:09: Debug - Args: [1 0]
+2025-04-04T15:04:09: [GIN] 2025/04/04 - 15:04:09 | 200 |    3.991122ms |       127.0.0.1 | GET      "/api/v1/questions?page=1&limit=1"
+2025-04-04T15:05:09: GetQuestions called with params: page=1, limit=1, sort=created_at, order=desc, tag=, search=
+2025-04-04T15:05:09: Debug - Base SQL Query: SELECT q.id, q.title, q.content, q.created_at, q.updated_at, q.like_count, q.view_count FROM questions q ORDER BY q.created_at desc LIMIT ? OFFSET ?
+2025-04-04T15:05:09: Debug - Count SQL Query: SELECT COUNT(*) FROM questions q
+2025-04-04T15:05:09: Debug - Args: [1 0]
+2025-04-04T15:05:09: [GIN] 2025/04/04 - 15:05:09 | 200 |    4.830352ms |       127.0.0.1 | GET      "/api/v1/questions?page=1&limit=1"
+2025-04-04T15:06:09: GetQuestions called with params: page=1, limit=1, sort=created_at, order=desc, tag=, search=
+2025-04-04T15:06:09: Debug - Base SQL Query: SELECT q.id, q.title, q.content, q.created_at, q.updated_at, q.like_count, q.view_count FROM questions q ORDER BY q.created_at desc LIMIT ? OFFSET ?
+2025-04-04T15:06:09: Debug - Count SQL Query: SELECT COUNT(*) FROM questions q
+2025-04-04T15:06:09: Debug - Args: [1 0]
+2025-04-04T15:06:09: [GIN] 2025/04/04 - 15:06:09 | 200 |    2.765567ms |       127.0.0.1 | GET      "/api/v1/questions?page=1&limit=1"
+2025-04-04T15:07:09: GetQuestions called with params: page=1, limit=1, sort=created_at, order=desc, tag=, search=
+2025-04-04T15:07:09: Debug - Base SQL Query: SELECT q.id, q.title, q.content, q.created_at, q.updated_at, q.like_count, q.view_count FROM questions q ORDER BY q.created_at desc LIMIT ? OFFSET ?
+2025-04-04T15:07:09: Debug - Count SQL Query: SELECT COUNT(*) FROM questions q
+2025-04-04T15:07:09: Debug - Args: [1 0]
+2025-04-04T15:07:09: [GIN] 2025/04/04 - 15:07:09 | 200 |    3.165878ms |       127.0.0.1 | GET      "/api/v1/questions?page=1&limit=1"
+2025-04-04T15:08:09: GetQuestions called with params: page=1, limit=1, sort=created_at, order=desc, tag=, search=
+2025-04-04T15:08:09: Debug - Base SQL Query: SELECT q.id, q.title, q.content, q.created_at, q.updated_at, q.like_count, q.view_count FROM questions q ORDER BY q.created_at desc LIMIT ? OFFSET ?
+2025-04-04T15:08:09: Debug - Count SQL Query: SELECT COUNT(*) FROM questions q
+2025-04-04T15:08:09: Debug - Args: [1 0]
+2025-04-04T15:08:09: [GIN] 2025/04/04 - 15:08:09 | 200 |    2.636511ms |       127.0.0.1 | GET      "/api/v1/questions?page=1&limit=1"
+2025-04-04T15:09:09: GetQuestions called with params: page=1, limit=1, sort=created_at, order=desc, tag=, search=
+2025-04-04T15:09:09: Debug - Base SQL Query: SELECT q.id, q.title, q.content, q.created_at, q.updated_at, q.like_count, q.view_count FROM questions q ORDER BY q.created_at desc LIMIT ? OFFSET ?
+2025-04-04T15:09:09: Debug - Count SQL Query: SELECT COUNT(*) FROM questions q
+2025-04-04T15:09:09: Debug - Args: [1 0]
+2025-04-04T15:09:09: [GIN] 2025/04/04 - 15:09:09 | 200 |     2.48749ms |       127.0.0.1 | GET      "/api/v1/questions?page=1&limit=1"
+2025-04-04T15:09:27: GetQuestions called with params: page=1, limit=1, sort=created_at, order=desc, tag=, search=
+2025-04-04T15:09:27: Debug - Base SQL Query: SELECT q.id, q.title, q.content, q.created_at, q.updated_at, q.like_count, q.view_count FROM questions q ORDER BY q.created_at desc LIMIT ? OFFSET ?
+2025-04-04T15:09:27: Debug - Count SQL Query: SELECT COUNT(*) FROM questions q
+2025-04-04T15:09:27: Debug - Args: [1 0]
+2025-04-04T15:09:27: [GIN] 2025/04/04 - 15:09:27 | 200 |    2.523362ms |       127.0.0.1 | GET      "/api/v1/questions?page=1&limit=1"
+2025-04-04T15:09:47: GetQuestions called with params: page=1, limit=1, sort=created_at, order=desc, tag=, search=
+2025-04-04T15:09:47: Debug - Base SQL Query: SELECT q.id, q.title, q.content, q.created_at, q.updated_at, q.like_count, q.view_count FROM questions q ORDER BY q.created_at desc LIMIT ? OFFSET ?
+2025-04-04T15:09:47: Debug - Count SQL Query: SELECT COUNT(*) FROM questions q
+2025-04-04T15:09:47: Debug - Args: [1 0]
+2025-04-04T15:09:47: [GIN] 2025/04/04 - 15:09:47 | 200 |    2.572285ms |       127.0.0.1 | GET      "/api/v1/questions?page=1&limit=1"
+2025-04-04T15:10:17: GetQuestions called with params: page=1, limit=1, sort=created_at, order=desc, tag=, search=
+2025-04-04T15:10:17: Debug - Base SQL Query: SELECT q.id, q.title, q.content, q.created_at, q.updated_at, q.like_count, q.view_count FROM questions q ORDER BY q.created_at desc LIMIT ? OFFSET ?
+2025-04-04T15:10:17: Debug - Count SQL Query: SELECT COUNT(*) FROM questions q
+2025-04-04T15:10:17: Debug - Args: [1 0]
+2025-04-04T15:10:17: [GIN] 2025/04/04 - 15:10:17 | 200 |    3.761888ms |       127.0.0.1 | GET      "/api/v1/questions?page=1&limit=1"
+2025-04-04T15:10:47: GetQuestions called with params: page=1, limit=1, sort=created_at, order=desc, tag=, search=
+2025-04-04T15:10:47: Debug - Base SQL Query: SELECT q.id, q.title, q.content, q.created_at, q.updated_at, q.like_count, q.view_count FROM questions q ORDER BY q.created_at desc LIMIT ? OFFSET ?
+2025-04-04T15:10:47: Debug - Count SQL Query: SELECT COUNT(*) FROM questions q
+2025-04-04T15:10:47: Debug - Args: [1 0]
+2025-04-04T15:10:47: [GIN] 2025/04/04 - 15:10:47 | 200 |    2.911233ms |       127.0.0.1 | GET      "/api/v1/questions?page=1&limit=1"
+2025-04-04T15:11:17: GetQuestions called with params: page=1, limit=1, sort=created_at, order=desc, tag=, search=
+2025-04-04T15:11:17: Debug - Base SQL Query: SELECT q.id, q.title, q.content, q.created_at, q.updated_at, q.like_count, q.view_count FROM questions q ORDER BY q.created_at desc LIMIT ? OFFSET ?
+2025-04-04T15:11:17: Debug - Count SQL Query: SELECT COUNT(*) FROM questions q
+2025-04-04T15:11:17: Debug - Args: [1 0]
+2025-04-04T15:11:17: [GIN] 2025/04/04 - 15:11:17 | 200 |    2.700216ms |       127.0.0.1 | GET      "/api/v1/questions?page=1&limit=1"
+2025-04-04T15:11:47: GetQuestions called with params: page=1, limit=1, sort=created_at, order=desc, tag=, search=
+2025-04-04T15:11:47: Debug - Base SQL Query: SELECT q.id, q.title, q.content, q.created_at, q.updated_at, q.like_count, q.view_count FROM questions q ORDER BY q.created_at desc LIMIT ? OFFSET ?
+2025-04-04T15:11:47: Debug - Count SQL Query: SELECT COUNT(*) FROM questions q
+2025-04-04T15:11:47: Debug - Args: [1 0]
+2025-04-04T15:11:47: [GIN] 2025/04/04 - 15:11:47 | 200 |    2.522613ms |       127.0.0.1 | GET      "/api/v1/questions?page=1&limit=1"
+2025-04-04T15:13:09: GetQuestions called with params: page=1, limit=1, sort=created_at, order=desc, tag=, search=
+2025-04-04T15:13:09: Debug - Base SQL Query: SELECT q.id, q.title, q.content, q.created_at, q.updated_at, q.like_count, q.view_count FROM questions q ORDER BY q.created_at desc LIMIT ? OFFSET ?
+2025-04-04T15:13:09: Debug - Count SQL Query: SELECT COUNT(*) FROM questions q
+2025-04-04T15:13:09: Debug - Args: [1 0]
+2025-04-04T15:13:09: [GIN] 2025/04/04 - 15:13:09 | 200 |    2.915355ms |       127.0.0.1 | GET      "/api/v1/questions?page=1&limit=1"
+2025-04-04T15:14:09: GetQuestions called with params: page=1, limit=1, sort=created_at, order=desc, tag=, search=
+2025-04-04T15:14:09: Debug - Base SQL Query: SELECT q.id, q.title, q.content, q.created_at, q.updated_at, q.like_count, q.view_count FROM questions q ORDER BY q.created_at desc LIMIT ? OFFSET ?
+2025-04-04T15:14:09: Debug - Count SQL Query: SELECT COUNT(*) FROM questions q
+2025-04-04T15:14:09: Debug - Args: [1 0]
+2025-04-04T15:14:09: [GIN] 2025/04/04 - 15:14:09 | 200 |    2.916329ms |       127.0.0.1 | GET      "/api/v1/questions?page=1&limit=1"
+2025-04-04T15:15:09: GetQuestions called with params: page=1, limit=1, sort=created_at, order=desc, tag=, search=
+2025-04-04T15:15:09: Debug - Base SQL Query: SELECT q.id, q.title, q.content, q.created_at, q.updated_at, q.like_count, q.view_count FROM questions q ORDER BY q.created_at desc LIMIT ? OFFSET ?
+2025-04-04T15:15:09: Debug - Count SQL Query: SELECT COUNT(*) FROM questions q
+2025-04-04T15:15:09: Debug - Args: [1 0]
+2025-04-04T15:15:09: [GIN] 2025/04/04 - 15:15:09 | 200 |    3.891427ms |       127.0.0.1 | GET      "/api/v1/questions?page=1&limit=1"
+2025-04-04T15:16:09: GetQuestions called with params: page=1, limit=1, sort=created_at, order=desc, tag=, search=
+2025-04-04T15:16:09: Debug - Base SQL Query: SELECT q.id, q.title, q.content, q.created_at, q.updated_at, q.like_count, q.view_count FROM questions q ORDER BY q.created_at desc LIMIT ? OFFSET ?
+2025-04-04T15:16:09: Debug - Count SQL Query: SELECT COUNT(*) FROM questions q
+2025-04-04T15:16:09: Debug - Args: [1 0]
+2025-04-04T15:16:09: [GIN] 2025/04/04 - 15:16:09 | 200 |    3.218176ms |       127.0.0.1 | GET      "/api/v1/questions?page=1&limit=1"
+2025-04-04T15:17:09: GetQuestions called with params: page=1, limit=1, sort=created_at, order=desc, tag=, search=
+2025-04-04T15:17:09: Debug - Base SQL Query: SELECT q.id, q.title, q.content, q.created_at, q.updated_at, q.like_count, q.view_count FROM questions q ORDER BY q.created_at desc LIMIT ? OFFSET ?
+2025-04-04T15:17:09: Debug - Count SQL Query: SELECT COUNT(*) FROM questions q
+2025-04-04T15:17:09: Debug - Args: [1 0]
+2025-04-04T15:17:09: [GIN] 2025/04/04 - 15:17:09 | 200 |    5.095983ms |       127.0.0.1 | GET      "/api/v1/questions?page=1&limit=1"
+2025-04-04T15:18:09: GetQuestions called with params: page=1, limit=1, sort=created_at, order=desc, tag=, search=
+2025-04-04T15:18:09: Debug - Base SQL Query: SELECT q.id, q.title, q.content, q.created_at, q.updated_at, q.like_count, q.view_count FROM questions q ORDER BY q.created_at desc LIMIT ? OFFSET ?
+2025-04-04T15:18:09: Debug - Count SQL Query: SELECT COUNT(*) FROM questions q
+2025-04-04T15:18:09: Debug - Args: [1 0]
+2025-04-04T15:18:09: [GIN] 2025/04/04 - 15:18:09 | 200 |    3.398129ms |       127.0.0.1 | GET      "/api/v1/questions?page=1&limit=1"
+2025-04-04T15:19:09: GetQuestions called with params: page=1, limit=1, sort=created_at, order=desc, tag=, search=
+2025-04-04T15:19:09: Debug - Base SQL Query: SELECT q.id, q.title, q.content, q.created_at, q.updated_at, q.like_count, q.view_count FROM questions q ORDER BY q.created_at desc LIMIT ? OFFSET ?
+2025-04-04T15:19:09: Debug - Count SQL Query: SELECT COUNT(*) FROM questions q
+2025-04-04T15:19:09: Debug - Args: [1 0]
+2025-04-04T15:19:09: [GIN] 2025/04/04 - 15:19:09 | 200 |    2.418485ms |       127.0.0.1 | GET      "/api/v1/questions?page=1&limit=1"
+2025-04-04T15:20:09: GetQuestions called with params: page=1, limit=1, sort=created_at, order=desc, tag=, search=
+2025-04-04T15:20:09: Debug - Base SQL Query: SELECT q.id, q.title, q.content, q.created_at, q.updated_at, q.like_count, q.view_count FROM questions q ORDER BY q.created_at desc LIMIT ? OFFSET ?
+2025-04-04T15:20:09: Debug - Count SQL Query: SELECT COUNT(*) FROM questions q
+2025-04-04T15:20:09: Debug - Args: [1 0]
+2025-04-04T15:20:09: [GIN] 2025/04/04 - 15:20:09 | 200 |    2.768624ms |       127.0.0.1 | GET      "/api/v1/questions?page=1&limit=1"
+2025-04-04T15:21:09: GetQuestions called with params: page=1, limit=1, sort=created_at, order=desc, tag=, search=
+2025-04-04T15:21:09: Debug - Base SQL Query: SELECT q.id, q.title, q.content, q.created_at, q.updated_at, q.like_count, q.view_count FROM questions q ORDER BY q.created_at desc LIMIT ? OFFSET ?
+2025-04-04T15:21:09: Debug - Count SQL Query: SELECT COUNT(*) FROM questions q
+2025-04-04T15:21:09: Debug - Args: [1 0]
+2025-04-04T15:21:09: [GIN] 2025/04/04 - 15:21:09 | 200 |    2.614164ms |       127.0.0.1 | GET      "/api/v1/questions?page=1&limit=1"
+2025-04-04T15:22:09: GetQuestions called with params: page=1, limit=1, sort=created_at, order=desc, tag=, search=
+2025-04-04T15:22:09: Debug - Base SQL Query: SELECT q.id, q.title, q.content, q.created_at, q.updated_at, q.like_count, q.view_count FROM questions q ORDER BY q.created_at desc LIMIT ? OFFSET ?
+2025-04-04T15:22:09: Debug - Count SQL Query: SELECT COUNT(*) FROM questions q
+2025-04-04T15:22:09: Debug - Args: [1 0]
+2025-04-04T15:22:09: [GIN] 2025/04/04 - 15:22:09 | 200 |    2.824267ms |       127.0.0.1 | GET      "/api/v1/questions?page=1&limit=1"
+2025-04-04T15:23:09: GetQuestions called with params: page=1, limit=1, sort=created_at, order=desc, tag=, search=
+2025-04-04T15:23:09: Debug - Base SQL Query: SELECT q.id, q.title, q.content, q.created_at, q.updated_at, q.like_count, q.view_count FROM questions q ORDER BY q.created_at desc LIMIT ? OFFSET ?
+2025-04-04T15:23:09: Debug - Count SQL Query: SELECT COUNT(*) FROM questions q
+2025-04-04T15:23:09: Debug - Args: [1 0]
+2025-04-04T15:23:09: [GIN] 2025/04/04 - 15:23:09 | 200 |    2.629366ms |       127.0.0.1 | GET      "/api/v1/questions?page=1&limit=1"
+2025-04-04T15:24:09: GetQuestions called with params: page=1, limit=1, sort=created_at, order=desc, tag=, search=
+2025-04-04T15:24:09: Debug - Base SQL Query: SELECT q.id, q.title, q.content, q.created_at, q.updated_at, q.like_count, q.view_count FROM questions q ORDER BY q.created_at desc LIMIT ? OFFSET ?
+2025-04-04T15:24:09: Debug - Count SQL Query: SELECT COUNT(*) FROM questions q
+2025-04-04T15:24:09: Debug - Args: [1 0]
+2025-04-04T15:24:09: [GIN] 2025/04/04 - 15:24:09 | 200 |    3.581747ms |       127.0.0.1 | GET      "/api/v1/questions?page=1&limit=1"
+2025-04-04T15:25:09: GetQuestions called with params: page=1, limit=1, sort=created_at, order=desc, tag=, search=
+2025-04-04T15:25:09: Debug - Base SQL Query: SELECT q.id, q.title, q.content, q.created_at, q.updated_at, q.like_count, q.view_count FROM questions q ORDER BY q.created_at desc LIMIT ? OFFSET ?
+2025-04-04T15:25:09: Debug - Count SQL Query: SELECT COUNT(*) FROM questions q
+2025-04-04T15:25:09: Debug - Args: [1 0]
+2025-04-04T15:25:09: [GIN] 2025/04/04 - 15:25:09 | 200 |     2.44544ms |       127.0.0.1 | GET      "/api/v1/questions?page=1&limit=1"
+2025-04-04T15:26:09: GetQuestions called with params: page=1, limit=1, sort=created_at, order=desc, tag=, search=
+2025-04-04T15:26:09: Debug - Base SQL Query: SELECT q.id, q.title, q.content, q.created_at, q.updated_at, q.like_count, q.view_count FROM questions q ORDER BY q.created_at desc LIMIT ? OFFSET ?
+2025-04-04T15:26:09: Debug - Count SQL Query: SELECT COUNT(*) FROM questions q
+2025-04-04T15:26:09: Debug - Args: [1 0]
+2025-04-04T15:26:09: [GIN] 2025/04/04 - 15:26:09 | 200 |    3.618433ms |       127.0.0.1 | GET      "/api/v1/questions?page=1&limit=1"
+2025-04-04T15:27:09: GetQuestions called with params: page=1, limit=1, sort=created_at, order=desc, tag=, search=
+2025-04-04T15:27:09: Debug - Base SQL Query: SELECT q.id, q.title, q.content, q.created_at, q.updated_at, q.like_count, q.view_count FROM questions q ORDER BY q.created_at desc LIMIT ? OFFSET ?
+2025-04-04T15:27:09: Debug - Count SQL Query: SELECT COUNT(*) FROM questions q
+2025-04-04T15:27:09: Debug - Args: [1 0]
+2025-04-04T15:27:09: [GIN] 2025/04/04 - 15:27:09 | 200 |    2.397594ms |       127.0.0.1 | GET      "/api/v1/questions?page=1&limit=1"
+2025-04-04T15:28:09: GetQuestions called with params: page=1, limit=1, sort=created_at, order=desc, tag=, search=
+2025-04-04T15:28:09: Debug - Base SQL Query: SELECT q.id, q.title, q.content, q.created_at, q.updated_at, q.like_count, q.view_count FROM questions q ORDER BY q.created_at desc LIMIT ? OFFSET ?
+2025-04-04T15:28:09: Debug - Count SQL Query: SELECT COUNT(*) FROM questions q
+2025-04-04T15:28:09: Debug - Args: [1 0]
+2025-04-04T15:28:09: [GIN] 2025/04/04 - 15:28:09 | 200 |    2.935984ms |       127.0.0.1 | GET      "/api/v1/questions?page=1&limit=1"
+2025-04-04T15:29:09: GetQuestions called with params: page=1, limit=1, sort=created_at, order=desc, tag=, search=
+2025-04-04T15:29:09: Debug - Base SQL Query: SELECT q.id, q.title, q.content, q.created_at, q.updated_at, q.like_count, q.view_count FROM questions q ORDER BY q.created_at desc LIMIT ? OFFSET ?
+2025-04-04T15:29:09: Debug - Count SQL Query: SELECT COUNT(*) FROM questions q
+2025-04-04T15:29:09: Debug - Args: [1 0]
+2025-04-04T15:29:09: [GIN] 2025/04/04 - 15:29:09 | 200 |    2.626139ms |       127.0.0.1 | GET      "/api/v1/questions?page=1&limit=1"
+2025-04-04T15:30:09: GetQuestions called with params: page=1, limit=1, sort=created_at, order=desc, tag=, search=
+2025-04-04T15:30:09: Debug - Base SQL Query: SELECT q.id, q.title, q.content, q.created_at, q.updated_at, q.like_count, q.view_count FROM questions q ORDER BY q.created_at desc LIMIT ? OFFSET ?
+2025-04-04T15:30:09: Debug - Count SQL Query: SELECT COUNT(*) FROM questions q
+2025-04-04T15:30:09: Debug - Args: [1 0]
+2025-04-04T15:30:09: [GIN] 2025/04/04 - 15:30:09 | 200 |    2.604665ms |       127.0.0.1 | GET      "/api/v1/questions?page=1&limit=1"
+2025-04-04T15:31:09: GetQuestions called with params: page=1, limit=1, sort=created_at, order=desc, tag=, search=
+2025-04-04T15:31:09: Debug - Base SQL Query: SELECT q.id, q.title, q.content, q.created_at, q.updated_at, q.like_count, q.view_count FROM questions q ORDER BY q.created_at desc LIMIT ? OFFSET ?
+2025-04-04T15:31:09: Debug - Count SQL Query: SELECT COUNT(*) FROM questions q
+2025-04-04T15:31:09: Debug - Args: [1 0]
+2025-04-04T15:31:09: [GIN] 2025/04/04 - 15:31:09 | 200 |    2.712639ms |       127.0.0.1 | GET      "/api/v1/questions?page=1&limit=1"
+2025-04-04T15:32:09: GetQuestions called with params: page=1, limit=1, sort=created_at, order=desc, tag=, search=
+2025-04-04T15:32:09: Debug - Base SQL Query: SELECT q.id, q.title, q.content, q.created_at, q.updated_at, q.like_count, q.view_count FROM questions q ORDER BY q.created_at desc LIMIT ? OFFSET ?
+2025-04-04T15:32:09: Debug - Count SQL Query: SELECT COUNT(*) FROM questions q
+2025-04-04T15:32:09: Debug - Args: [1 0]
+2025-04-04T15:32:09: [GIN] 2025/04/04 - 15:32:09 | 200 |    4.141719ms |       127.0.0.1 | GET      "/api/v1/questions?page=1&limit=1"
+2025-04-04T15:33:09: GetQuestions called with params: page=1, limit=1, sort=created_at, order=desc, tag=, search=
+2025-04-04T15:33:09: Debug - Base SQL Query: SELECT q.id, q.title, q.content, q.created_at, q.updated_at, q.like_count, q.view_count FROM questions q ORDER BY q.created_at desc LIMIT ? OFFSET ?
+2025-04-04T15:33:09: Debug - Count SQL Query: SELECT COUNT(*) FROM questions q
+2025-04-04T15:33:09: Debug - Args: [1 0]
+2025-04-04T15:33:09: [GIN] 2025/04/04 - 15:33:09 | 200 |    4.194451ms |       127.0.0.1 | GET      "/api/v1/questions?page=1&limit=1"
+2025-04-04T15:34:09: GetQuestions called with params: page=1, limit=1, sort=created_at, order=desc, tag=, search=
+2025-04-04T15:34:09: Debug - Base SQL Query: SELECT q.id, q.title, q.content, q.created_at, q.updated_at, q.like_count, q.view_count FROM questions q ORDER BY q.created_at desc LIMIT ? OFFSET ?
+2025-04-04T15:34:09: Debug - Count SQL Query: SELECT COUNT(*) FROM questions q
+2025-04-04T15:34:09: Debug - Args: [1 0]
+2025-04-04T15:34:09: [GIN] 2025/04/04 - 15:34:09 | 200 |    2.511486ms |       127.0.0.1 | GET      "/api/v1/questions?page=1&limit=1"
+2025-04-04T15:35:09: GetQuestions called with params: page=1, limit=1, sort=created_at, order=desc, tag=, search=
+2025-04-04T15:35:09: Debug - Base SQL Query: SELECT q.id, q.title, q.content, q.created_at, q.updated_at, q.like_count, q.view_count FROM questions q ORDER BY q.created_at desc LIMIT ? OFFSET ?
+2025-04-04T15:35:09: Debug - Count SQL Query: SELECT COUNT(*) FROM questions q
+2025-04-04T15:35:09: Debug - Args: [1 0]
+2025-04-04T15:35:09: [GIN] 2025/04/04 - 15:35:09 | 200 |    3.013354ms |       127.0.0.1 | GET      "/api/v1/questions?page=1&limit=1"
+2025-04-04T15:36:09: GetQuestions called with params: page=1, limit=1, sort=created_at, order=desc, tag=, search=
+2025-04-04T15:36:09: Debug - Base SQL Query: SELECT q.id, q.title, q.content, q.created_at, q.updated_at, q.like_count, q.view_count FROM questions q ORDER BY q.created_at desc LIMIT ? OFFSET ?
+2025-04-04T15:36:09: Debug - Count SQL Query: SELECT COUNT(*) FROM questions q
+2025-04-04T15:36:09: Debug - Args: [1 0]
+2025-04-04T15:36:09: [GIN] 2025/04/04 - 15:36:09 | 200 |    2.752993ms |       127.0.0.1 | GET      "/api/v1/questions?page=1&limit=1"
+2025-04-04T15:37:09: GetQuestions called with params: page=1, limit=1, sort=created_at, order=desc, tag=, search=
+2025-04-04T15:37:09: Debug - Base SQL Query: SELECT q.id, q.title, q.content, q.created_at, q.updated_at, q.like_count, q.view_count FROM questions q ORDER BY q.created_at desc LIMIT ? OFFSET ?
+2025-04-04T15:37:09: Debug - Count SQL Query: SELECT COUNT(*) FROM questions q
+2025-04-04T15:37:09: Debug - Args: [1 0]
+2025-04-04T15:37:09: [GIN] 2025/04/04 - 15:37:09 | 200 |    2.405323ms |       127.0.0.1 | GET      "/api/v1/questions?page=1&limit=1"
+2025-04-04T15:38:09: GetQuestions called with params: page=1, limit=1, sort=created_at, order=desc, tag=, search=
+2025-04-04T15:38:09: Debug - Base SQL Query: SELECT q.id, q.title, q.content, q.created_at, q.updated_at, q.like_count, q.view_count FROM questions q ORDER BY q.created_at desc LIMIT ? OFFSET ?
+2025-04-04T15:38:09: Debug - Count SQL Query: SELECT COUNT(*) FROM questions q
+2025-04-04T15:38:09: Debug - Args: [1 0]
+2025-04-04T15:38:09: [GIN] 2025/04/04 - 15:38:09 | 200 |     3.21688ms |       127.0.0.1 | GET      "/api/v1/questions?page=1&limit=1"
+2025-04-04T15:39:09: GetQuestions called with params: page=1, limit=1, sort=created_at, order=desc, tag=, search=
+2025-04-04T15:39:09: Debug - Base SQL Query: SELECT q.id, q.title, q.content, q.created_at, q.updated_at, q.like_count, q.view_count FROM questions q ORDER BY q.created_at desc LIMIT ? OFFSET ?
+2025-04-04T15:39:09: Debug - Count SQL Query: SELECT COUNT(*) FROM questions q
+2025-04-04T15:39:09: Debug - Args: [1 0]
+2025-04-04T15:39:09: [GIN] 2025/04/04 - 15:39:09 | 200 |    3.985665ms |       127.0.0.1 | GET      "/api/v1/questions?page=1&limit=1"
+2025-04-04T15:40:09: GetQuestions called with params: page=1, limit=1, sort=created_at, order=desc, tag=, search=
+2025-04-04T15:40:09: Debug - Base SQL Query: SELECT q.id, q.title, q.content, q.created_at, q.updated_at, q.like_count, q.view_count FROM questions q ORDER BY q.created_at desc LIMIT ? OFFSET ?
+2025-04-04T15:40:09: Debug - Count SQL Query: SELECT COUNT(*) FROM questions q
+2025-04-04T15:40:09: Debug - Args: [1 0]
+2025-04-04T15:40:09: [GIN] 2025/04/04 - 15:40:09 | 200 |    3.327498ms |       127.0.0.1 | GET      "/api/v1/questions?page=1&limit=1"
+2025-04-04T15:41:09: GetQuestions called with params: page=1, limit=1, sort=created_at, order=desc, tag=, search=
+2025-04-04T15:41:09: Debug - Base SQL Query: SELECT q.id, q.title, q.content, q.created_at, q.updated_at, q.like_count, q.view_count FROM questions q ORDER BY q.created_at desc LIMIT ? OFFSET ?
+2025-04-04T15:41:09: Debug - Count SQL Query: SELECT COUNT(*) FROM questions q
+2025-04-04T15:41:09: Debug - Args: [1 0]
+2025-04-04T15:41:09: [GIN] 2025/04/04 - 15:41:09 | 200 |    2.365147ms |       127.0.0.1 | GET      "/api/v1/questions?page=1&limit=1"
+2025-04-04T15:42:09: GetQuestions called with params: page=1, limit=1, sort=created_at, order=desc, tag=, search=
+2025-04-04T15:42:09: Debug - Base SQL Query: SELECT q.id, q.title, q.content, q.created_at, q.updated_at, q.like_count, q.view_count FROM questions q ORDER BY q.created_at desc LIMIT ? OFFSET ?
+2025-04-04T15:42:09: Debug - Count SQL Query: SELECT COUNT(*) FROM questions q
+2025-04-04T15:42:09: Debug - Args: [1 0]
+2025-04-04T15:42:09: [GIN] 2025/04/04 - 15:42:09 | 200 |    4.558084ms |       127.0.0.1 | GET      "/api/v1/questions?page=1&limit=1"
+2025-04-04T15:43:09: GetQuestions called with params: page=1, limit=1, sort=created_at, order=desc, tag=, search=
+2025-04-04T15:43:09: Debug - Base SQL Query: SELECT q.id, q.title, q.content, q.created_at, q.updated_at, q.like_count, q.view_count FROM questions q ORDER BY q.created_at desc LIMIT ? OFFSET ?
+2025-04-04T15:43:09: Debug - Count SQL Query: SELECT COUNT(*) FROM questions q
+2025-04-04T15:43:09: Debug - Args: [1 0]
+2025-04-04T15:43:09: [GIN] 2025/04/04 - 15:43:09 | 200 |    2.597769ms |       127.0.0.1 | GET      "/api/v1/questions?page=1&limit=1"
+2025-04-04T15:44:09: GetQuestions called with params: page=1, limit=1, sort=created_at, order=desc, tag=, search=
+2025-04-04T15:44:09: Debug - Base SQL Query: SELECT q.id, q.title, q.content, q.created_at, q.updated_at, q.like_count, q.view_count FROM questions q ORDER BY q.created_at desc LIMIT ? OFFSET ?
+2025-04-04T15:44:09: Debug - Count SQL Query: SELECT COUNT(*) FROM questions q
+2025-04-04T15:44:09: Debug - Args: [1 0]
+2025-04-04T15:44:09: [GIN] 2025/04/04 - 15:44:09 | 200 |     3.90808ms |       127.0.0.1 | GET      "/api/v1/questions?page=1&limit=1"
+2025-04-04T15:45:09: GetQuestions called with params: page=1, limit=1, sort=created_at, order=desc, tag=, search=
+2025-04-04T15:45:09: Debug - Base SQL Query: SELECT q.id, q.title, q.content, q.created_at, q.updated_at, q.like_count, q.view_count FROM questions q ORDER BY q.created_at desc LIMIT ? OFFSET ?
+2025-04-04T15:45:09: Debug - Count SQL Query: SELECT COUNT(*) FROM questions q
+2025-04-04T15:45:09: Debug - Args: [1 0]
+2025-04-04T15:45:09: [GIN] 2025/04/04 - 15:45:09 | 200 |    2.782672ms |       127.0.0.1 | GET      "/api/v1/questions?page=1&limit=1"
+2025-04-04T15:46:09: GetQuestions called with params: page=1, limit=1, sort=created_at, order=desc, tag=, search=
+2025-04-04T15:46:09: Debug - Base SQL Query: SELECT q.id, q.title, q.content, q.created_at, q.updated_at, q.like_count, q.view_count FROM questions q ORDER BY q.created_at desc LIMIT ? OFFSET ?
+2025-04-04T15:46:09: Debug - Count SQL Query: SELECT COUNT(*) FROM questions q
+2025-04-04T15:46:09: Debug - Args: [1 0]
+2025-04-04T15:46:09: [GIN] 2025/04/04 - 15:46:09 | 200 |    3.593058ms |       127.0.0.1 | GET      "/api/v1/questions?page=1&limit=1"
+2025-04-04T15:47:09: GetQuestions called with params: page=1, limit=1, sort=created_at, order=desc, tag=, search=
+2025-04-04T15:47:09: Debug - Base SQL Query: SELECT q.id, q.title, q.content, q.created_at, q.updated_at, q.like_count, q.view_count FROM questions q ORDER BY q.created_at desc LIMIT ? OFFSET ?
+2025-04-04T15:47:09: Debug - Count SQL Query: SELECT COUNT(*) FROM questions q
+2025-04-04T15:47:09: Debug - Args: [1 0]
+2025-04-04T15:47:09: [GIN] 2025/04/04 - 15:47:09 | 200 |    2.941773ms |       127.0.0.1 | GET      "/api/v1/questions?page=1&limit=1"
+2025-04-04T15:48:09: GetQuestions called with params: page=1, limit=1, sort=created_at, order=desc, tag=, search=
+2025-04-04T15:48:09: Debug - Base SQL Query: SELECT q.id, q.title, q.content, q.created_at, q.updated_at, q.like_count, q.view_count FROM questions q ORDER BY q.created_at desc LIMIT ? OFFSET ?
+2025-04-04T15:48:09: Debug - Count SQL Query: SELECT COUNT(*) FROM questions q
+2025-04-04T15:48:09: Debug - Args: [1 0]
+2025-04-04T15:48:09: [GIN] 2025/04/04 - 15:48:09 | 200 |    3.564254ms |       127.0.0.1 | GET      "/api/v1/questions?page=1&limit=1"
+2025-04-04T15:49:09: GetQuestions called with params: page=1, limit=1, sort=created_at, order=desc, tag=, search=
+2025-04-04T15:49:09: Debug - Base SQL Query: SELECT q.id, q.title, q.content, q.created_at, q.updated_at, q.like_count, q.view_count FROM questions q ORDER BY q.created_at desc LIMIT ? OFFSET ?
+2025-04-04T15:49:09: Debug - Count SQL Query: SELECT COUNT(*) FROM questions q
+2025-04-04T15:49:09: Debug - Args: [1 0]
+2025-04-04T15:49:09: [GIN] 2025/04/04 - 15:49:09 | 200 |    3.069609ms |       127.0.0.1 | GET      "/api/v1/questions?page=1&limit=1"
+2025-04-04T15:50:09: GetQuestions called with params: page=1, limit=1, sort=created_at, order=desc, tag=, search=
+2025-04-04T15:50:09: Debug - Base SQL Query: SELECT q.id, q.title, q.content, q.created_at, q.updated_at, q.like_count, q.view_count FROM questions q ORDER BY q.created_at desc LIMIT ? OFFSET ?
+2025-04-04T15:50:09: Debug - Count SQL Query: SELECT COUNT(*) FROM questions q
+2025-04-04T15:50:09: Debug - Args: [1 0]
+2025-04-04T15:50:09: [GIN] 2025/04/04 - 15:50:09 | 200 |    2.639428ms |       127.0.0.1 | GET      "/api/v1/questions?page=1&limit=1"
+2025-04-04T15:51:09: GetQuestions called with params: page=1, limit=1, sort=created_at, order=desc, tag=, search=
+2025-04-04T15:51:09: Debug - Base SQL Query: SELECT q.id, q.title, q.content, q.created_at, q.updated_at, q.like_count, q.view_count FROM questions q ORDER BY q.created_at desc LIMIT ? OFFSET ?
+2025-04-04T15:51:09: Debug - Count SQL Query: SELECT COUNT(*) FROM questions q
+2025-04-04T15:51:09: Debug - Args: [1 0]
+2025-04-04T15:51:09: [GIN] 2025/04/04 - 15:51:09 | 200 |    2.447313ms |       127.0.0.1 | GET      "/api/v1/questions?page=1&limit=1"
+2025-04-04T15:52:09: GetQuestions called with params: page=1, limit=1, sort=created_at, order=desc, tag=, search=
+2025-04-04T15:52:09: Debug - Base SQL Query: SELECT q.id, q.title, q.content, q.created_at, q.updated_at, q.like_count, q.view_count FROM questions q ORDER BY q.created_at desc LIMIT ? OFFSET ?
+2025-04-04T15:52:09: Debug - Count SQL Query: SELECT COUNT(*) FROM questions q
+2025-04-04T15:52:09: Debug - Args: [1 0]
+2025-04-04T15:52:09: [GIN] 2025/04/04 - 15:52:09 | 200 |    2.464492ms |       127.0.0.1 | GET      "/api/v1/questions?page=1&limit=1"
+2025-04-04T15:53:09: GetQuestions called with params: page=1, limit=1, sort=created_at, order=desc, tag=, search=
+2025-04-04T15:53:09: Debug - Base SQL Query: SELECT q.id, q.title, q.content, q.created_at, q.updated_at, q.like_count, q.view_count FROM questions q ORDER BY q.created_at desc LIMIT ? OFFSET ?
+2025-04-04T15:53:09: Debug - Count SQL Query: SELECT COUNT(*) FROM questions q
+2025-04-04T15:53:09: Debug - Args: [1 0]
+2025-04-04T15:53:09: [GIN] 2025/04/04 - 15:53:09 | 200 |    3.077763ms |       127.0.0.1 | GET      "/api/v1/questions?page=1&limit=1"
+2025-04-04T15:54:09: GetQuestions called with params: page=1, limit=1, sort=created_at, order=desc, tag=, search=
+2025-04-04T15:54:09: Debug - Base SQL Query: SELECT q.id, q.title, q.content, q.created_at, q.updated_at, q.like_count, q.view_count FROM questions q ORDER BY q.created_at desc LIMIT ? OFFSET ?
+2025-04-04T15:54:09: Debug - Count SQL Query: SELECT COUNT(*) FROM questions q
+2025-04-04T15:54:09: Debug - Args: [1 0]
+2025-04-04T15:54:09: [GIN] 2025/04/04 - 15:54:09 | 200 |    2.703123ms |       127.0.0.1 | GET      "/api/v1/questions?page=1&limit=1"
+2025-04-04T15:55:09: GetQuestions called with params: page=1, limit=1, sort=created_at, order=desc, tag=, search=
+2025-04-04T15:55:09: Debug - Base SQL Query: SELECT q.id, q.title, q.content, q.created_at, q.updated_at, q.like_count, q.view_count FROM questions q ORDER BY q.created_at desc LIMIT ? OFFSET ?
+2025-04-04T15:55:09: Debug - Count SQL Query: SELECT COUNT(*) FROM questions q
+2025-04-04T15:55:09: Debug - Args: [1 0]
+2025-04-04T15:55:09: [GIN] 2025/04/04 - 15:55:09 | 200 |    3.260049ms |       127.0.0.1 | GET      "/api/v1/questions?page=1&limit=1"
+2025-04-04T15:56:09: GetQuestions called with params: page=1, limit=1, sort=created_at, order=desc, tag=, search=
+2025-04-04T15:56:09: Debug - Base SQL Query: SELECT q.id, q.title, q.content, q.created_at, q.updated_at, q.like_count, q.view_count FROM questions q ORDER BY q.created_at desc LIMIT ? OFFSET ?
+2025-04-04T15:56:09: Debug - Count SQL Query: SELECT COUNT(*) FROM questions q
+2025-04-04T15:56:09: Debug - Args: [1 0]
+2025-04-04T15:56:09: [GIN] 2025/04/04 - 15:56:09 | 200 |    2.370237ms |       127.0.0.1 | GET      "/api/v1/questions?page=1&limit=1"
+2025-04-04T15:57:09: GetQuestions called with params: page=1, limit=1, sort=created_at, order=desc, tag=, search=
+2025-04-04T15:57:09: Debug - Base SQL Query: SELECT q.id, q.title, q.content, q.created_at, q.updated_at, q.like_count, q.view_count FROM questions q ORDER BY q.created_at desc LIMIT ? OFFSET ?
+2025-04-04T15:57:09: Debug - Count SQL Query: SELECT COUNT(*) FROM questions q
+2025-04-04T15:57:09: Debug - Args: [1 0]
+2025-04-04T15:57:09: [GIN] 2025/04/04 - 15:57:09 | 200 |     5.54216ms |       127.0.0.1 | GET      "/api/v1/questions?page=1&limit=1"
+2025-04-04T15:58:09: GetQuestions called with params: page=1, limit=1, sort=created_at, order=desc, tag=, search=
+2025-04-04T15:58:09: Debug - Base SQL Query: SELECT q.id, q.title, q.content, q.created_at, q.updated_at, q.like_count, q.view_count FROM questions q ORDER BY q.created_at desc LIMIT ? OFFSET ?
+2025-04-04T15:58:09: Debug - Count SQL Query: SELECT COUNT(*) FROM questions q
+2025-04-04T15:58:09: Debug - Args: [1 0]
+2025-04-04T15:58:09: [GIN] 2025/04/04 - 15:58:09 | 200 |    3.475129ms |       127.0.0.1 | GET      "/api/v1/questions?page=1&limit=1"
+2025-04-04T15:59:03: [GIN] 2025/04/04 - 15:59:03 | 403 |       41.95µs |       127.0.0.1 | GET      "/api/v1/questions?page=1&limit=10&sort=created_at&order=desc"
+2025-04-04T15:59:03: [GIN] 2025/04/04 - 15:59:03 | 403 |      21.394µs |       127.0.0.1 | GET      "/api/v1/questions?page=1&limit=1"
+2025-04-04T15:59:09: GetQuestions called with params: page=1, limit=1, sort=created_at, order=desc, tag=, search=
+2025-04-04T15:59:09: Debug - Base SQL Query: SELECT q.id, q.title, q.content, q.created_at, q.updated_at, q.like_count, q.view_count FROM questions q ORDER BY q.created_at desc LIMIT ? OFFSET ?
+2025-04-04T15:59:09: Debug - Count SQL Query: SELECT COUNT(*) FROM questions q
+2025-04-04T15:59:09: Debug - Args: [1 0]
+2025-04-04T15:59:09: [GIN] 2025/04/04 - 15:59:09 | 200 |    4.726644ms |       127.0.0.1 | GET      "/api/v1/questions?page=1&limit=1"
+2025-04-04T15:59:24: [GIN] 2025/04/04 - 15:59:24 | 403 |       3.079µs |       127.0.0.1 | GET      "/api/v1/questions?page=1&limit=1"
+2025-04-04T15:59:24: [GIN] 2025/04/04 - 15:59:24 | 403 |       2.713µs |       127.0.0.1 | GET      "/api/v1/questions?page=1&limit=10&sort=created_at&order=desc"
+2025-04-04T15:59:54: [GIN] 2025/04/04 - 15:59:54 | 403 |       3.139µs |       127.0.0.1 | GET      "/api/v1/questions?page=1&limit=1"
+2025-04-04T16:00:09: GetQuestions called with params: page=1, limit=1, sort=created_at, order=desc, tag=, search=
+2025-04-04T16:00:09: Debug - Base SQL Query: SELECT q.id, q.title, q.content, q.created_at, q.updated_at, q.like_count, q.view_count FROM questions q ORDER BY q.created_at desc LIMIT ? OFFSET ?
+2025-04-04T16:00:09: Debug - Count SQL Query: SELECT COUNT(*) FROM questions q
+2025-04-04T16:00:09: Debug - Args: [1 0]
+2025-04-04T16:00:09: [GIN] 2025/04/04 - 16:00:09 | 200 |    4.280711ms |       127.0.0.1 | GET      "/api/v1/questions?page=1&limit=1"
+2025-04-04T16:00:25: [GIN] 2025/04/04 - 16:00:25 | 403 |      30.768µs |       127.0.0.1 | GET      "/api/v1/questions?page=1&limit=1"
+2025-04-04T16:00:54: [GIN] 2025/04/04 - 16:00:54 | 403 |        3.73µs |       127.0.0.1 | GET      "/api/v1/questions?page=1&limit=1"
+2025-04-04T16:01:10: GetQuestions called with params: page=1, limit=1, sort=created_at, order=desc, tag=, search=
+2025-04-04T16:01:10: Debug - Base SQL Query: SELECT q.id, q.title, q.content, q.created_at, q.updated_at, q.like_count, q.view_count FROM questions q ORDER BY q.created_at desc LIMIT ? OFFSET ?
+2025-04-04T16:01:10: Debug - Count SQL Query: SELECT COUNT(*) FROM questions q
+2025-04-04T16:01:10: Debug - Args: [1 0]
+2025-04-04T16:01:10: [GIN] 2025/04/04 - 16:01:10 | 200 |    4.950665ms |       127.0.0.1 | GET      "/api/v1/questions?page=1&limit=1"
+2025-04-04T16:01:24: [GIN] 2025/04/04 - 16:01:24 | 403 |       3.536µs |       127.0.0.1 | GET      "/api/v1/questions?page=1&limit=1"
+2025-04-04T16:01:54: [GIN] 2025/04/04 - 16:01:54 | 403 |       5.987µs |       127.0.0.1 | GET      "/api/v1/questions?page=1&limit=1"
+2025-04-04T16:02:07: [GIN] 2025/04/04 - 16:02:07 | 403 |       3.116µs |       127.0.0.1 | GET      "/api/v1/questions?page=1&limit=1"
+2025-04-04T16:02:07: [GIN] 2025/04/04 - 16:02:07 | 403 |       2.804µs |       127.0.0.1 | GET      "/api/v1/questions?page=1&limit=10&sort=created_at&order=desc"
+2025-04-04T16:02:09: GetQuestions called with params: page=1, limit=1, sort=created_at, order=desc, tag=, search=
+2025-04-04T16:02:09: Debug - Base SQL Query: SELECT q.id, q.title, q.content, q.created_at, q.updated_at, q.like_count, q.view_count FROM questions q ORDER BY q.created_at desc LIMIT ? OFFSET ?
+2025-04-04T16:02:09: Debug - Count SQL Query: SELECT COUNT(*) FROM questions q
+2025-04-04T16:02:09: Debug - Args: [1 0]
+2025-04-04T16:02:09: [GIN] 2025/04/04 - 16:02:09 | 200 |    3.079739ms |       127.0.0.1 | GET      "/api/v1/questions?page=1&limit=1"
+2025-04-04T16:02:30: GetQuestions called with params: page=1, limit=1, sort=created_at, order=desc, tag=, search=
+2025-04-04T16:02:30: Debug - Base SQL Query: SELECT q.id, q.title, q.content, q.created_at, q.updated_at, q.like_count, q.view_count FROM questions q ORDER BY q.created_at desc LIMIT ? OFFSET ?
+2025-04-04T16:02:30: Debug - Count SQL Query: SELECT COUNT(*) FROM questions q
+2025-04-04T16:02:30: Debug - Args: [1 0]
+2025-04-04T16:02:30: [GIN] 2025/04/04 - 16:02:30 | 200 |    3.628996ms |       127.0.0.1 | GET      "/api/v1/questions?page=1&limit=1"
+2025-04-04T16:02:37: [GIN] 2025/04/04 - 16:02:37 | 403 |       3.655µs |       127.0.0.1 | GET      "/api/v1/questions?page=1&limit=1"
+2025-04-04T16:03:07: [GIN] 2025/04/04 - 16:03:07 | 403 |       4.732µs |       127.0.0.1 | GET      "/api/v1/questions?page=1&limit=1"
+2025-04-04T16:03:37: [GIN] 2025/04/04 - 16:03:37 | 403 |       3.642µs |       127.0.0.1 | GET      "/api/v1/questions?page=1&limit=1"
+2025-04-04T16:04:07: [GIN] 2025/04/04 - 16:04:07 | 403 |       2.972µs |       127.0.0.1 | GET      "/api/v1/questions?page=1&limit=1"
+2025-04-04T16:04:56: [GIN] 2025/04/04 - 16:04:56 | 403 |       3.544µs |       127.0.0.1 | GET      "/api/v1/questions?page=1&limit=1"
+2025-04-04T16:05:07: [GIN-debug] [WARNING] Creating an Engine instance with the Logger and Recovery middleware already attached.
+2025-04-04T16:05:07: 
+2025-04-04T16:05:07: [GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+2025-04-04T16:05:07:  - using env:	export GIN_MODE=release
+2025-04-04T16:05:07:  - using code:	gin.SetMode(gin.ReleaseMode)
+2025-04-04T16:05:07: 
+2025-04-04T16:05:07: [GIN-debug] GET    /api/v1/questions         --> github.com/questions/backend/internal/api.GetQuestions (4 handlers)
+2025-04-04T16:05:07: [GIN-debug] GET    /api/v1/questions/:id     --> github.com/questions/backend/internal/api.GetQuestion (4 handlers)
+2025-04-04T16:05:07: [GIN-debug] POST   /api/v1/questions         --> github.com/questions/backend/internal/api.CreateQuestion (4 handlers)
+2025-04-04T16:05:07: [GIN-debug] POST   /api/v1/questions/:id/comments --> github.com/questions/backend/internal/api.AddComment (4 handlers)
+2025-04-04T16:05:07: [GIN-debug] POST   /api/v1/questions/:id/like --> github.com/questions/backend/internal/api.LikeQuestion (4 handlers)
+2025-04-04T16:05:07: [GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+2025-04-04T16:05:07: Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
+2025-04-04T16:05:07: [GIN-debug] Listening and serving HTTP on :8081
+2025-04-04T16:05:07: [GIN] 2025/04/04 - 16:05:07 | 403 |      28.201µs |       127.0.0.1 | GET      "/api/v1/questions?page=1&limit=1"
+2025-04-04T16:05:14: GetQuestions called with params: page=1, limit=1, sort=created_at, order=desc, tag=, search=
+2025-04-04T16:05:14: Debug - Base SQL Query: SELECT q.id, q.title, q.content, q.created_at, q.updated_at, q.like_count, q.view_count FROM questions q ORDER BY q.created_at desc LIMIT ? OFFSET ?
+2025-04-04T16:05:14: Debug - Count SQL Query: SELECT COUNT(*) FROM questions q
+2025-04-04T16:05:14: Debug - Args: [1 0]
+2025-04-04T16:05:14: [GIN] 2025/04/04 - 16:05:14 | 200 |    4.735292ms |       127.0.0.1 | GET      "/api/v1/questions?page=1&limit=1"
+2025-04-04T16:05:14: GetQuestions called with params: page=1, limit=10, sort=created_at, order=desc, tag=, search=
+2025-04-04T16:05:14: Debug - Base SQL Query: SELECT q.id, q.title, q.content, q.created_at, q.updated_at, q.like_count, q.view_count FROM questions q ORDER BY q.created_at desc LIMIT ? OFFSET ?
+2025-04-04T16:05:14: Debug - Count SQL Query: SELECT COUNT(*) FROM questions q
+2025-04-04T16:05:14: Debug - Args: [10 0]
+2025-04-04T16:05:14: [GIN] 2025/04/04 - 16:05:14 | 200 |   11.386768ms |       127.0.0.1 | GET      "/api/v1/questions?page=1&limit=10&sort=created_at&order=desc"
+2025-04-04T16:05:21: [GIN] 2025/04/04 - 16:05:21 | 200 |    4.326741ms |       127.0.0.1 | GET      "/api/v1/questions/12"
+2025-04-04T16:06:24: GetQuestions called with params: page=1, limit=1, sort=created_at, order=desc, tag=, search=
+2025-04-04T16:06:24: Debug - Base SQL Query: SELECT q.id, q.title, q.content, q.created_at, q.updated_at, q.like_count, q.view_count FROM questions q ORDER BY q.created_at desc LIMIT ? OFFSET ?
+2025-04-04T16:06:24: Debug - Count SQL Query: SELECT COUNT(*) FROM questions q
+2025-04-04T16:06:24: Debug - Args: [1 0]
+2025-04-04T16:06:24: GetQuestions called with params: page=1, limit=10, sort=created_at, order=desc, tag=, search=
+2025-04-04T16:06:24: Debug - Base SQL Query: SELECT q.id, q.title, q.content, q.created_at, q.updated_at, q.like_count, q.view_count FROM questions q ORDER BY q.created_at desc LIMIT ? OFFSET ?
+2025-04-04T16:06:24: Debug - Count SQL Query: SELECT COUNT(*) FROM questions q
+2025-04-04T16:06:24: Debug - Args: [10 0]
+2025-04-04T16:06:24: [GIN] 2025/04/04 - 16:06:24 | 200 |    6.902422ms |       127.0.0.1 | GET      "/api/v1/questions?page=1&limit=1"
+2025-04-04T16:06:24: [GIN] 2025/04/04 - 16:06:24 | 200 |   14.567523ms |       127.0.0.1 | GET      "/api/v1/questions?page=1&limit=10&sort=created_at&order=desc"
+2025-04-04T16:06:25: [GIN] 2025/04/04 - 16:06:25 | 200 |    2.725325ms |       127.0.0.1 | GET      "/api/v1/questions/12"
+2025-04-04T16:06:41: GetQuestions called with params: page=1, limit=1, sort=created_at, order=desc, tag=, search=
+2025-04-04T16:06:41: Debug - Base SQL Query: SELECT q.id, q.title, q.content, q.created_at, q.updated_at, q.like_count, q.view_count FROM questions q ORDER BY q.created_at desc LIMIT ? OFFSET ?
+2025-04-04T16:06:41: Debug - Count SQL Query: SELECT COUNT(*) FROM questions q
+2025-04-04T16:06:41: Debug - Args: [1 0]
+2025-04-04T16:06:41: [GIN] 2025/04/04 - 16:06:41 | 200 |    7.662387ms |       127.0.0.1 | GET      "/api/v1/questions?page=1&limit=1"
+2025-04-04T16:06:42: GetQuestions called with params: page=1, limit=10, sort=created_at, order=desc, tag=, search=
+2025-04-04T16:06:42: Debug - Base SQL Query: SELECT q.id, q.title, q.content, q.created_at, q.updated_at, q.like_count, q.view_count FROM questions q ORDER BY q.created_at desc LIMIT ? OFFSET ?
+2025-04-04T16:06:42: Debug - Count SQL Query: SELECT COUNT(*) FROM questions q
+2025-04-04T16:06:42: Debug - Args: [10 0]
+2025-04-04T16:06:42: [GIN] 2025/04/04 - 16:06:42 | 200 |    8.767494ms |       127.0.0.1 | GET      "/api/v1/questions?page=1&limit=10&sort=created_at&order=desc"
+2025-04-04T16:07:06: GetQuestions called with params: page=1, limit=10, sort=created_at, order=desc, tag=, search=
+2025-04-04T16:07:06: Debug - Base SQL Query: SELECT q.id, q.title, q.content, q.created_at, q.updated_at, q.like_count, q.view_count FROM questions q ORDER BY q.created_at desc LIMIT ? OFFSET ?
+2025-04-04T16:07:06: Debug - Count SQL Query: SELECT COUNT(*) FROM questions q
+2025-04-04T16:07:06: Debug - Args: [10 0]
+2025-04-04T16:07:06: [GIN] 2025/04/04 - 16:07:06 | 200 |    9.769242ms |       127.0.0.1 | GET      "/api/v1/questions?page=1&limit=10&sort=created_at&order=desc"
+2025-04-04T16:07:06: GetQuestions called with params: page=1, limit=1, sort=created_at, order=desc, tag=, search=
+2025-04-04T16:07:06: Debug - Base SQL Query: SELECT q.id, q.title, q.content, q.created_at, q.updated_at, q.like_count, q.view_count FROM questions q ORDER BY q.created_at desc LIMIT ? OFFSET ?
+2025-04-04T16:07:06: Debug - Count SQL Query: SELECT COUNT(*) FROM questions q
+2025-04-04T16:07:06: Debug - Args: [1 0]
+2025-04-04T16:07:06: [GIN] 2025/04/04 - 16:07:06 | 200 |    3.495344ms |       127.0.0.1 | GET      "/api/v1/questions?page=1&limit=1"
+2025-04-04T16:07:08: [GIN] 2025/04/04 - 16:07:08 | 200 |    4.304706ms |       127.0.0.1 | GET      "/api/v1/questions/12"
+2025-04-04T16:07:11: LikeQuestion called for question ID: 12
+2025-04-04T16:07:11: Client IP: 127.0.0.1
+2025-04-04T16:07:11: Successfully removed like for question ID: 12 from IP: 127.0.0.1
+2025-04-04T16:07:11: [GIN] 2025/04/04 - 16:07:11 | 200 |    9.966126ms |       127.0.0.1 | POST     "/api/v1/questions/12/like"
+2025-04-04T16:07:21: GetQuestions called with params: page=1, limit=1, sort=created_at, order=desc, tag=, search=
+2025-04-04T16:07:21: Debug - Base SQL Query: SELECT q.id, q.title, q.content, q.created_at, q.updated_at, q.like_count, q.view_count FROM questions q ORDER BY q.created_at desc LIMIT ? OFFSET ?
+2025-04-04T16:07:21: Debug - Count SQL Query: SELECT COUNT(*) FROM questions q
+2025-04-04T16:07:21: Debug - Args: [1 0]
+2025-04-04T16:07:21: [GIN] 2025/04/04 - 16:07:21 | 200 |    3.567652ms |       127.0.0.1 | GET      "/api/v1/questions?page=1&limit=1"
+2025-04-04T16:07:22: GetQuestions called with params: page=1, limit=10, sort=created_at, order=desc, tag=, search=
+2025-04-04T16:07:22: Debug - Base SQL Query: SELECT q.id, q.title, q.content, q.created_at, q.updated_at, q.like_count, q.view_count FROM questions q ORDER BY q.created_at desc LIMIT ? OFFSET ?
+2025-04-04T16:07:22: Debug - Count SQL Query: SELECT COUNT(*) FROM questions q
+2025-04-04T16:07:22: Debug - Args: [10 0]
+2025-04-04T16:07:22: [GIN] 2025/04/04 - 16:07:22 | 200 |   10.652955ms |       127.0.0.1 | GET      "/api/v1/questions?page=1&limit=10&sort=created_at&order=desc"
+2025-04-04T16:07:24: [GIN] 2025/04/04 - 16:07:24 | 200 |    6.516228ms |       127.0.0.1 | GET      "/api/v1/questions/12"
+2025-04-04T16:07:28: LikeQuestion called for question ID: 12
+2025-04-04T16:07:28: Client IP: 127.0.0.1
+2025-04-04T16:07:28: Successfully added like for question ID: 12 from IP: 127.0.0.1
+2025-04-04T16:07:28: [GIN] 2025/04/04 - 16:07:28 | 200 |    9.723187ms |       127.0.0.1 | POST     "/api/v1/questions/12/like"
+2025-04-04T16:07:30: GetQuestions called with params: page=1, limit=1, sort=created_at, order=desc, tag=, search=
+2025-04-04T16:07:30: Debug - Base SQL Query: SELECT q.id, q.title, q.content, q.created_at, q.updated_at, q.like_count, q.view_count FROM questions q ORDER BY q.created_at desc LIMIT ? OFFSET ?
+2025-04-04T16:07:30: Debug - Count SQL Query: SELECT COUNT(*) FROM questions q
+2025-04-04T16:07:30: Debug - Args: [1 0]
+2025-04-04T16:07:30: [GIN] 2025/04/04 - 16:07:30 | 200 |     3.36281ms |       127.0.0.1 | GET      "/api/v1/questions?page=1&limit=1"
+2025-04-04T16:07:30: GetQuestions called with params: page=1, limit=10, sort=created_at, order=desc, tag=, search=
+2025-04-04T16:07:30: Debug - Base SQL Query: SELECT q.id, q.title, q.content, q.created_at, q.updated_at, q.like_count, q.view_count FROM questions q ORDER BY q.created_at desc LIMIT ? OFFSET ?
+2025-04-04T16:07:30: Debug - Count SQL Query: SELECT COUNT(*) FROM questions q
+2025-04-04T16:07:30: Debug - Args: [10 0]
+2025-04-04T16:07:30: [GIN] 2025/04/04 - 16:07:30 | 200 |     7.98131ms |       127.0.0.1 | GET      "/api/v1/questions?page=1&limit=10&sort=created_at&order=desc"
+2025-04-04T16:07:31: GetQuestions called with params: page=1, limit=1, sort=created_at, order=desc, tag=, search=
+2025-04-04T16:07:31: Debug - Base SQL Query: SELECT q.id, q.title, q.content, q.created_at, q.updated_at, q.like_count, q.view_count FROM questions q ORDER BY q.created_at desc LIMIT ? OFFSET ?
+2025-04-04T16:07:31: Debug - Count SQL Query: SELECT COUNT(*) FROM questions q
+2025-04-04T16:07:31: Debug - Args: [1 0]
+2025-04-04T16:07:31: [GIN] 2025/04/04 - 16:07:31 | 200 |    3.040779ms |       127.0.0.1 | GET      "/api/v1/questions?page=1&limit=1"
+2025-04-04T16:07:31: GetQuestions called with params: page=1, limit=10, sort=created_at, order=desc, tag=, search=
+2025-04-04T16:07:31: Debug - Base SQL Query: SELECT q.id, q.title, q.content, q.created_at, q.updated_at, q.like_count, q.view_count FROM questions q ORDER BY q.created_at desc LIMIT ? OFFSET ?
+2025-04-04T16:07:31: Debug - Count SQL Query: SELECT COUNT(*) FROM questions q
+2025-04-04T16:07:31: Debug - Args: [10 0]
+2025-04-04T16:07:31: [GIN] 2025/04/04 - 16:07:31 | 200 |    9.370266ms |       127.0.0.1 | GET      "/api/v1/questions?page=1&limit=10&sort=created_at&order=desc"
+2025-04-04T16:07:33: [GIN] 2025/04/04 - 16:07:33 | 200 |    2.550834ms |       127.0.0.1 | GET      "/api/v1/questions/11"
+2025-04-04T16:07:36: LikeQuestion called for question ID: 11
+2025-04-04T16:07:36: Client IP: 127.0.0.1
+2025-04-04T16:07:36: Successfully added like for question ID: 11 from IP: 127.0.0.1
+2025-04-04T16:07:36: [GIN] 2025/04/04 - 16:07:36 | 200 |    7.804001ms |       127.0.0.1 | POST     "/api/v1/questions/11/like"
+2025-04-04T16:07:37: GetQuestions called with params: page=1, limit=10, sort=created_at, order=desc, tag=, search=
+2025-04-04T16:07:37: Debug - Base SQL Query: SELECT q.id, q.title, q.content, q.created_at, q.updated_at, q.like_count, q.view_count FROM questions q ORDER BY q.created_at desc LIMIT ? OFFSET ?
+2025-04-04T16:07:37: Debug - Count SQL Query: SELECT COUNT(*) FROM questions q
+2025-04-04T16:07:37: Debug - Args: [10 0]
+2025-04-04T16:07:37: [GIN] 2025/04/04 - 16:07:37 | 200 |    9.467346ms |       127.0.0.1 | GET      "/api/v1/questions?page=1&limit=10&sort=created_at&order=desc"
+2025-04-04T16:07:37: GetQuestions called with params: page=1, limit=1, sort=created_at, order=desc, tag=, search=
+2025-04-04T16:07:37: Debug - Base SQL Query: SELECT q.id, q.title, q.content, q.created_at, q.updated_at, q.like_count, q.view_count FROM questions q ORDER BY q.created_at desc LIMIT ? OFFSET ?
+2025-04-04T16:07:37: Debug - Count SQL Query: SELECT COUNT(*) FROM questions q
+2025-04-04T16:07:37: Debug - Args: [1 0]
+2025-04-04T16:07:37: [GIN] 2025/04/04 - 16:07:37 | 200 |    3.037229ms |       127.0.0.1 | GET      "/api/v1/questions?page=1&limit=1"
+2025-04-04T16:07:39: GetQuestions called with params: page=1, limit=10, sort=created_at, order=desc, tag=, search=
+2025-04-04T16:07:39: Debug - Base SQL Query: SELECT q.id, q.title, q.content, q.created_at, q.updated_at, q.like_count, q.view_count FROM questions q ORDER BY q.created_at desc LIMIT ? OFFSET ?
+2025-04-04T16:07:39: Debug - Count SQL Query: SELECT COUNT(*) FROM questions q
+2025-04-04T16:07:39: Debug - Args: [10 0]
+2025-04-04T16:07:39: GetQuestions called with params: page=1, limit=1, sort=created_at, order=desc, tag=, search=
+2025-04-04T16:07:39: Debug - Base SQL Query: SELECT q.id, q.title, q.content, q.created_at, q.updated_at, q.like_count, q.view_count FROM questions q ORDER BY q.created_at desc LIMIT ? OFFSET ?
+2025-04-04T16:07:39: Debug - Count SQL Query: SELECT COUNT(*) FROM questions q
+2025-04-04T16:07:39: Debug - Args: [1 0]
+2025-04-04T16:07:39: [GIN] 2025/04/04 - 16:07:39 | 200 |   10.564482ms |       127.0.0.1 | GET      "/api/v1/questions?page=1&limit=10&sort=created_at&order=desc"
+2025-04-04T16:07:39: [GIN] 2025/04/04 - 16:07:39 | 200 |    8.973061ms |       127.0.0.1 | GET      "/api/v1/questions?page=1&limit=1"
+2025-04-04T16:07:47: [GIN] 2025/04/04 - 16:07:47 | 200 |    3.101687ms |       127.0.0.1 | GET      "/api/v1/questions/12"
+2025-04-04T16:07:50: LikeQuestion called for question ID: 12
+2025-04-04T16:07:50: Client IP: 127.0.0.1
+2025-04-04T16:07:50: Successfully removed like for question ID: 12 from IP: 127.0.0.1
+2025-04-04T16:07:50: [GIN] 2025/04/04 - 16:07:50 | 200 |    9.308752ms |       127.0.0.1 | POST     "/api/v1/questions/12/like"
+2025-04-04T16:07:51: LikeQuestion called for question ID: 12
+2025-04-04T16:07:51: Client IP: 127.0.0.1
+2025-04-04T16:07:51: Successfully added like for question ID: 12 from IP: 127.0.0.1
+2025-04-04T16:07:51: [GIN] 2025/04/04 - 16:07:51 | 200 |    9.834606ms |       127.0.0.1 | POST     "/api/v1/questions/12/like"
+2025-04-04T16:07:52: GetQuestions called with params: page=1, limit=1, sort=created_at, order=desc, tag=, search=
+2025-04-04T16:07:52: Debug - Base SQL Query: SELECT q.id, q.title, q.content, q.created_at, q.updated_at, q.like_count, q.view_count FROM questions q ORDER BY q.created_at desc LIMIT ? OFFSET ?
+2025-04-04T16:07:52: Debug - Count SQL Query: SELECT COUNT(*) FROM questions q
+2025-04-04T16:07:52: Debug - Args: [1 0]
+2025-04-04T16:07:52: [GIN] 2025/04/04 - 16:07:52 | 200 |    3.673967ms |       127.0.0.1 | GET      "/api/v1/questions?page=1&limit=1"
+2025-04-04T16:07:52: GetQuestions called with params: page=1, limit=10, sort=created_at, order=desc, tag=, search=
+2025-04-04T16:07:52: Debug - Base SQL Query: SELECT q.id, q.title, q.content, q.created_at, q.updated_at, q.like_count, q.view_count FROM questions q ORDER BY q.created_at desc LIMIT ? OFFSET ?
+2025-04-04T16:07:52: Debug - Count SQL Query: SELECT COUNT(*) FROM questions q
+2025-04-04T16:07:52: Debug - Args: [10 0]
+2025-04-04T16:07:52: [GIN] 2025/04/04 - 16:07:52 | 200 |    9.353006ms |       127.0.0.1 | GET      "/api/v1/questions?page=1&limit=10&sort=created_at&order=desc"
+2025-04-04T16:07:53: [GIN] 2025/04/04 - 16:07:53 | 200 |    3.355729ms |       127.0.0.1 | GET      "/api/v1/questions/12"
+2025-04-04T16:07:57: LikeQuestion called for question ID: 12
+2025-04-04T16:07:57: Client IP: 127.0.0.1
+2025-04-04T16:07:57: Successfully removed like for question ID: 12 from IP: 127.0.0.1
+2025-04-04T16:07:57: [GIN] 2025/04/04 - 16:07:57 | 200 |    6.299022ms |       127.0.0.1 | POST     "/api/v1/questions/12/like"
+2025-04-04T16:07:57: LikeQuestion called for question ID: 12
+2025-04-04T16:07:57: Client IP: 127.0.0.1
+2025-04-04T16:07:57: Successfully added like for question ID: 12 from IP: 127.0.0.1
+2025-04-04T16:07:57: [GIN] 2025/04/04 - 16:07:57 | 200 |    9.457964ms |       127.0.0.1 | POST     "/api/v1/questions/12/like"
+2025-04-04T16:08:08: [GIN] 2025/04/04 - 16:08:08 | 201 |    3.243066ms |       127.0.0.1 | POST     "/api/v1/questions/12/comments"
+2025-04-04T16:08:09: [GIN] 2025/04/04 - 16:08:09 | 200 |    3.052365ms |       127.0.0.1 | GET      "/api/v1/questions/12"
+2025-04-04T16:08:13: GetQuestions called with params: page=1, limit=10, sort=created_at, order=desc, tag=, search=
+2025-04-04T16:08:13: Debug - Base SQL Query: SELECT q.id, q.title, q.content, q.created_at, q.updated_at, q.like_count, q.view_count FROM questions q ORDER BY q.created_at desc LIMIT ? OFFSET ?
+2025-04-04T16:08:13: Debug - Count SQL Query: SELECT COUNT(*) FROM questions q
+2025-04-04T16:08:13: Debug - Args: [10 0]
+2025-04-04T16:08:13: GetQuestions called with params: page=1, limit=1, sort=created_at, order=desc, tag=, search=
+2025-04-04T16:08:13: Debug - Base SQL Query: SELECT q.id, q.title, q.content, q.created_at, q.updated_at, q.like_count, q.view_count FROM questions q ORDER BY q.created_at desc LIMIT ? OFFSET ?
+2025-04-04T16:08:13: Debug - Count SQL Query: SELECT COUNT(*) FROM questions q
+2025-04-04T16:08:13: Debug - Args: [1 0]
+2025-04-04T16:08:13: [GIN] 2025/04/04 - 16:08:13 | 200 |    3.214378ms |       127.0.0.1 | GET      "/api/v1/questions?page=1&limit=1"
+2025-04-04T16:08:13: [GIN] 2025/04/04 - 16:08:13 | 200 |   11.701221ms |       127.0.0.1 | GET      "/api/v1/questions?page=1&limit=10&sort=created_at&order=desc"
+2025-04-04T16:08:57: GetQuestions called with params: page=1, limit=1, sort=created_at, order=desc, tag=, search=
+2025-04-04T16:08:57: Debug - Base SQL Query: SELECT q.id, q.title, q.content, q.created_at, q.updated_at, q.like_count, q.view_count FROM questions q ORDER BY q.created_at desc LIMIT ? OFFSET ?
+2025-04-04T16:08:57: Debug - Count SQL Query: SELECT COUNT(*) FROM questions q
+2025-04-04T16:08:57: Debug - Args: [1 0]
+2025-04-04T16:08:57: [GIN] 2025/04/04 - 16:08:57 | 200 |    4.910925ms |       127.0.0.1 | GET      "/api/v1/questions?page=1&limit=1"
+2025-04-04T16:08:57: GetQuestions called with params: page=1, limit=10, sort=created_at, order=desc, tag=, search=
+2025-04-04T16:08:57: Debug - Base SQL Query: SELECT q.id, q.title, q.content, q.created_at, q.updated_at, q.like_count, q.view_count FROM questions q ORDER BY q.created_at desc LIMIT ? OFFSET ?
+2025-04-04T16:08:57: Debug - Count SQL Query: SELECT COUNT(*) FROM questions q
+2025-04-04T16:08:57: Debug - Args: [10 0]
+2025-04-04T16:08:57: [GIN] 2025/04/04 - 16:08:57 | 200 |    8.785434ms |       127.0.0.1 | GET      "/api/v1/questions?page=1&limit=10&sort=created_at&order=desc"
+2025-04-04T16:08:58: [GIN] 2025/04/04 - 16:08:58 | 200 |    8.095043ms |       127.0.0.1 | GET      "/api/v1/questions/12"
+2025-04-04T16:09:11: GetQuestions called with params: page=1, limit=10, sort=created_at, order=desc, tag=, search=
+2025-04-04T16:09:11: Debug - Base SQL Query: SELECT q.id, q.title, q.content, q.created_at, q.updated_at, q.like_count, q.view_count FROM questions q ORDER BY q.created_at desc LIMIT ? OFFSET ?
+2025-04-04T16:09:11: Debug - Count SQL Query: SELECT COUNT(*) FROM questions q
+2025-04-04T16:09:11: Debug - Args: [10 0]
+2025-04-04T16:09:11: GetQuestions called with params: page=1, limit=1, sort=created_at, order=desc, tag=, search=
+2025-04-04T16:09:11: Debug - Base SQL Query: SELECT q.id, q.title, q.content, q.created_at, q.updated_at, q.like_count, q.view_count FROM questions q ORDER BY q.created_at desc LIMIT ? OFFSET ?
+2025-04-04T16:09:11: Debug - Count SQL Query: SELECT COUNT(*) FROM questions q
+2025-04-04T16:09:11: Debug - Args: [1 0]
+2025-04-04T16:09:11: [GIN] 2025/04/04 - 16:09:11 | 200 |     5.53511ms |       127.0.0.1 | GET      "/api/v1/questions?page=1&limit=1"
+2025-04-04T16:09:11: [GIN] 2025/04/04 - 16:09:11 | 200 |   15.345038ms |       127.0.0.1 | GET      "/api/v1/questions?page=1&limit=10&sort=created_at&order=desc"
+2025-04-04T16:09:14: GetQuestions called with params: page=1, limit=10, sort=like_count, order=desc, tag=, search=
+2025-04-04T16:09:14: Debug - Base SQL Query: SELECT q.id, q.title, q.content, q.created_at, q.updated_at, q.like_count, q.view_count FROM questions q ORDER BY q.like_count desc LIMIT ? OFFSET ?
+2025-04-04T16:09:14: Debug - Count SQL Query: SELECT COUNT(*) FROM questions q
+2025-04-04T16:09:14: Debug - Args: [10 0]
+2025-04-04T16:09:14: [GIN] 2025/04/04 - 16:09:14 | 200 |   13.126981ms |       127.0.0.1 | GET      "/api/v1/questions?page=1&limit=10&sort=like_count&order=desc"
+2025-04-04T16:09:15: GetQuestions called with params: page=1, limit=10, sort=view_count, order=desc, tag=, search=
+2025-04-04T16:09:15: Debug - Base SQL Query: SELECT q.id, q.title, q.content, q.created_at, q.updated_at, q.like_count, q.view_count FROM questions q ORDER BY q.view_count desc LIMIT ? OFFSET ?
+2025-04-04T16:09:15: Debug - Count SQL Query: SELECT COUNT(*) FROM questions q
+2025-04-04T16:09:15: Debug - Args: [10 0]
+2025-04-04T16:09:15: [GIN] 2025/04/04 - 16:09:15 | 200 |   11.153396ms |       127.0.0.1 | GET      "/api/v1/questions?page=1&limit=10&sort=view_count&order=desc"
+2025-04-04T16:09:41: GetQuestions called with params: page=1, limit=1, sort=created_at, order=desc, tag=, search=
+2025-04-04T16:09:41: Debug - Base SQL Query: SELECT q.id, q.title, q.content, q.created_at, q.updated_at, q.like_count, q.view_count FROM questions q ORDER BY q.created_at desc LIMIT ? OFFSET ?
+2025-04-04T16:09:41: Debug - Count SQL Query: SELECT COUNT(*) FROM questions q
+2025-04-04T16:09:41: Debug - Args: [1 0]
+2025-04-04T16:09:41: [GIN] 2025/04/04 - 16:09:41 | 200 |    3.027156ms |       127.0.0.1 | GET      "/api/v1/questions?page=1&limit=1"

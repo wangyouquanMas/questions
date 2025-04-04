@@ -10,8 +10,21 @@ import {
   CreateCommentRequest 
 } from './types';
 
-// Get API URL from environment variables or default to localhost
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8081/api/v1';
+// Get API URL from environment variables or use the server URL
+// Using window.location.hostname to dynamically determine the API host
+const getApiBaseUrl = () => {
+  // Check if we're running in a browser environment
+  if (typeof window !== 'undefined') {
+    // If we're on web3ite.tech, use that domain for API
+    if (window.location.hostname === 'web3ite.tech' || window.location.hostname === 'www.web3ite.tech') {
+      return 'https://web3ite.tech/api/v1';
+    }
+  }
+  // Otherwise fall back to localhost or environment variable
+  return import.meta.env.VITE_API_URL || 'http://localhost:8081/api/v1';
+};
+
+const API_URL = getApiBaseUrl();
 
 // Log which API URL we're using (helpful for debugging)
 console.log(`Using API URL: ${API_URL}`);

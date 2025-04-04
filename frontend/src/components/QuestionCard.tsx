@@ -86,7 +86,7 @@ const QuestionCard: React.FC<QuestionCardProps> = ({ question, tags = [] }) => {
             </svg>
             {formatCounter(getLikeCount(), '赞')}
           </span>
-          <span>,</span>
+          {/* <span>,</span> */}
           <span className="flex items-center">
             <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-1 text-blue-500" viewBox="0 0 20 20" fill="currentColor">
               <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />

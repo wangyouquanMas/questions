@@ -69,6 +69,91 @@ If the backend can't connect to the database:
 1. Check if MySQL is running on the configured port
 2. Update the database configuration in `backend/.env`
 
+## PM2 Process Management Commands
+
+This application is managed using PM2 (Process Manager 2). Here are essential commands for maintaining the application:
+
+### Basic Status and Monitoring
+
+```bash
+# View all running processes
+pm2 list
+
+# View detailed real-time dashboard
+pm2 monit
+
+# View all application logs
+pm2 logs
+
+# View logs for a specific application
+pm2 logs questions-backend
+pm2 logs questions-frontend
+
+# View only recent logs (last 200 lines)
+pm2 logs --lines 200
+```
+
+### Application Management
+
+```bash
+# Start an application
+pm2 start npm --name "app-name" -- start
+
+# Stop an application
+pm2 stop questions-backend
+
+# Restart an application (after code changes)
+pm2 restart questions-frontend
+
+# Stop all applications
+pm2 stop all
+
+# Restart all applications
+pm2 restart all
+
+# Delete/remove an application from PM2
+pm2 delete questions-frontend
+```
+
+### System Management
+
+```bash
+# Save the current process list (for auto-restart)
+pm2 save
+
+# Setup PM2 to start on system boot
+pm2 startup
+
+# Restore previously saved processes
+pm2 resurrect
+
+# Show detailed information about an application
+pm2 show questions-backend
+
+# Display memory and CPU usage
+pm2 prettylist
+```
+
+### Updating Applications
+
+```bash
+# Restart application with new environment variables
+pm2 restart questions-frontend --update-env
+
+# Zero-downtime reload
+pm2 reload questions-frontend
+```
+
+### Log Management
+
+```bash
+# Clear all application logs
+pm2 flush
+
+# Display log file paths
+pm2 logs --path
+```
+
 ## API Documentation
 
 ### Endpoints
